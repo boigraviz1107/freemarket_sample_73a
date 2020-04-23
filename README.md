@@ -19,7 +19,7 @@
 |phone_num|string|
 
 ### Association
-- belongs_to :user,dependent: :destroy
+- belongs_to :user
 
 
 
@@ -32,12 +32,12 @@
 |birth_date|date|null :false|
 
 ### Association
-- has_one :account
-- has_many :addresses
-- has_many :pays
-- has_many :comments
-- has_many :orders
-- has_many :items
+- has_one :account,dependent: :destroy
+- has_many :addresses,dependent: :destroy
+- has_many :pays,dependent: :destroy
+- has_many :comments,dependent: :destroy
+- has_many :orders,dependent: :destroy
+- has_many :items,dependent: :destroy
 
 
 
@@ -57,7 +57,7 @@
 |phone_num|string|
 
 ### Association
-- belongs_to :user,dependent: :destroy
+- belongs_to :user
 
 
 ## orders
@@ -79,7 +79,7 @@
 |card_id|string|null: false|
 
 ### Association
-- belongs_to :user,dependent: :destroy
+- belongs_to :user
 
 ## comments
 |Column|Type|Options|
@@ -89,8 +89,8 @@
 |text|string|null: false|
 
 ### Association
-- belongs_to :user,dependent: :destroy
-- belongs_to :item,dependent: :destroy
+- belongs_to :user
+- belongs_to :item
 
 
 
@@ -117,10 +117,10 @@
   - seller bears  :true  
 
 ### Association
-- belongs_to :user,dependent: :destroy
+- belongs_to :user
 - has_one :order
-- has_many :comments
-- has_many :images
+- has_many :comments,dependent: :destroy
+- has_many :images,dependent: :destroy
 - belongs_to :brand
 - belongs_to :category
 
@@ -133,7 +133,7 @@
 |image|string|null: false|
 
 ### Association
-- belongs_to :item,dependent: :destroy
+- belongs_to :item
 
 
 
