@@ -6,10 +6,6 @@
 ## accountsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_name_hira|string|null: false|
-|last_name_hira|string|null: false|
 |user_id|references|null: false,foreign_key:true|
 |post_num|string|null:false|
 |prefecture|string|null: false|
@@ -30,6 +26,10 @@
 |emaill|string|null: false|
 |password|string|null :false|
 |birth_date|date|null :false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_hira|string|null: false|
+|last_name_hira|string|null: false|
 
 ### Association
 - has_one :account,dependent: :destroy
