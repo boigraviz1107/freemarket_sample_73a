@@ -73,10 +73,8 @@ header {
       &__leftItems {
         display: flex;
         height: 32px;
-        a {
-          &:hover {
-            color:#ffb340;
-          }
+        a:hover {
+          color:#ffb340;
         }
         &__category {
           padding-right: 30px;
@@ -88,8 +86,6 @@ header {
       &__rightItems {
         display: flex;
         height: 32px;
-        &__login {
-        }
         &__signup {
           padding-left: 16px;
         }
