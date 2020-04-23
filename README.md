@@ -64,7 +64,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false,foreign_key: true|
-|item_id|references|foreign_key: true|
+|item_id|references|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -107,8 +107,8 @@
 |shipping_area|string|null: false|
 |lead_time|integer|null: false|
 |price|integer|null: false|
-|category_id|references|foreign_key:true|
-|brend_id|references|foreign_key:true|
+|category_id|references|null: false,foreign_key:true|
+|brand_id|references|foreign_key:true|
 |size|string|null: false|
 |shipping_method|string|null: false|
 
