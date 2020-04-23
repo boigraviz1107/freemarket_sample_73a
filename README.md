@@ -10,7 +10,7 @@
 |last_name|string|null: false|
 |first_name_hira|string|null: false|
 |last_name_hira|string|null: false|
-|user_id|references|foreign_key:true|
+|user_id|references|null: false,foreign_key:true|
 |post_num|string|null:false|
 |prefecture|string|null: false|
 |city|string|null:false|
@@ -48,7 +48,7 @@
 |last_name|string|null: false|
 |first_name_hira|string|null: false|
 |last_name_hira|string|null: false|
-|user_id|references|foreign_key:true|
+|user_id|references|null: false,foreign_key:true|
 |post_num|string|null:false|
 |prefecture|string|null: false|
 |city|string|null:false|
@@ -63,7 +63,7 @@
 ## orders
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 |item_id|references|foreign_key: true|
 
 ### Association
@@ -74,7 +74,7 @@
 ## pays
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 |custmer_id|string|null: false|
 |card_id|string|null: false|
 
@@ -84,7 +84,7 @@
 ## comments
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 |item_id|references|foreign_key: true|
 |text|string|null: false|
 
@@ -99,7 +99,7 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id||references|foreign_key: true|
+|user_id||references|null: false,foreign_key: true|
 |name|string|null: false, index :true|
 |explannation|text|null: false|
 |status|string|null: false|
@@ -129,7 +129,7 @@
 ## images
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
+|item_id|references|null: false,foreign_key: true|
 |image|string|null: false|
 
 ### Association
