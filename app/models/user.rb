@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
  validates :nickname, presence: true, uniqueness: true
  validates :birth_date, presence: true
+ devise :validatable, password_length: 7..128
+ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+ validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
+# VALID_EMAIL_REGEXで、ドメインを定義。メールアドレスは@とドメインを含む必要があるので下でvalidatesしています
 end
