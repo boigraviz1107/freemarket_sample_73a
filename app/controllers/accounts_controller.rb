@@ -20,6 +20,6 @@ class AccountsController < ApplicationController
 
   private
   def account_params
-    params.require(:account).permit(:post_num, :prefecture, :city, :city_num, :building, :phone_num).merge(user_id: 1)
+    params.require(:account).permit(:post_num, :prefecture, :city, :city_num, :building, :phone_num).merge(user_id: current_user.id)
   end
 end
