@@ -1,0 +1,14 @@
+.address-__form
+= form_with(model: @account, local: true) do |f|
+  = f.text_field :post_num, placeholder: :post_num
+  = f.text_field :prefecture, placeholder: :prefecture
+  = f.text_field :city, placeholder: :city
+  = f.text_field :city_num, placeholder: :city_num
+  = f.text_field :city_num, placeholder: :building
+  = f.text_field :city_num, placeholder: :phone_num
+  = f.submit "登録する"
+  -# クラス名を設定してからマークアップをお願いします
+
+
+
+
