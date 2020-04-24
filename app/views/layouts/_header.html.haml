@@ -1,2 +1,22 @@
 %header
-  %h1 header
+  .headerInner
+    .headerInner__mainHeader
+      = link_to "#", class: "headerInner__mainHeader__linkArea" do
+        %img(src="images/logo/logo.png" class="headerInner__mainHeader__linkArea__image")
+      .headerInner__mainHeader__seachArea
+        = form_with url: "#", class: 'headerInner__mainHeader__seachArea__form' do |f|
+          = f.text_field :keyword, placeholder: "キーワードから探す", class: 'headerInner__mainHeader__seachArea__form__input'
+          .headerInner__mainHeader__seachArea__form__submitArea
+            = f.button '', class: 'headerInner__mainHeader__seachArea__form__submitArea__submit' do
+              %img(src="images/icon/icon-search 1.png" class="headerInner__mainHeader__seachArea__form__submitArea__icon")
+    .headerInner__nav
+      .headerInner__nav__leftItems
+        .headerInner__nav__leftItems__category
+          = link_to "カテゴリー", "#"
+        .headerInner__nav__leftItems__brand
+          = link_to "ブランド", "#"
+      .headerInner__nav__rightItems
+        .headerInner__nav__rightItems__login
+          = link_to "ログイン", "#"
+        .headerInner__nav__rightItems__signup
+          = link_to "新規会員登録", "#"
