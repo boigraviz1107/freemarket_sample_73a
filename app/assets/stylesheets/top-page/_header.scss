@@ -86,7 +86,7 @@ header {
       &__rightItems {
         display: flex;
         height: 32px;
-        &__signup {
+        &__signup , &__mypage{
           padding-left: 16px;
         }
       }

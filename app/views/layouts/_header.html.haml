@@ -16,7 +16,13 @@
         .headerInner__nav__leftItems__brand
           = link_to "ブランド", "#"
       .headerInner__nav__rightItems
-        .headerInner__nav__rightItems__login
-          = link_to "ログイン", "#"
-        .headerInner__nav__rightItems__signup
-          = link_to "新規会員登録", "#"
+        - if user_signed_in?
+          .headerInner__nav__rightItems__logout
+            = link_to "ログアウト", "#"
+          .headerInner__nav__rightItems__maypage
+            = link_to "マイページ", "#"
+        - else
+          .headerInner__nav__rightItems__login
+            = link_to "ログイン", "#"
+          .headerInner__nav__rightItems__signup
+            = link_to "新規会員登録", "#"
