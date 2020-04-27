@@ -1,5 +1,17 @@
+- if flash[:error].present?
+  %ul.errors
+    - flash[:error].each do |e|
+      %p
+        %i
+          = e
 .address-__form
 = form_with(model: @item, local: true) do |f|
+  .field
+    %p
+      %br/
+      = f.fields_for :images do |i|
+        = i.label :image, "画像"
+        = i.file_field :image
   .field
     %p
       = f.label :name, "商品名"
@@ -43,7 +55,7 @@
     %p
       = f.label :shipping_area, "発送元の地域"
       %br/
-      = f.collection_select :shipping_area, Prefecture.all, :id, :name, include_blank: "選択して下さい"
+      = f.collection_select :shipping_area, Prefecture.all, :name, :name, include_blank: "選択して下さい"
   .field
     %p
       = f.label :lead_time, "発送までの日数"

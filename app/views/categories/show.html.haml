@@ -1,0 +1,7 @@
+= @category.name
+= @category.parent.name
+= @category.parent.parent.name
+%br/
+- @items.each do |item|
+  = item.name
+  %br/

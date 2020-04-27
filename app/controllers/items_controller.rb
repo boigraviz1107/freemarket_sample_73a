@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_action :has_user?, only: %i(edit update destroy)
 
   def index
-    @items = Item.all.includes(:user)
   end
 
   def show
@@ -12,16 +11,22 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    3.times{ @item.images.build }
   end
 
   def create
     @item = Item.new(params_item)
     binding.pry
+    unless @item.images.present?
+      @item.valid?
+      redirect_to new_item_path, flash: { error: @item.errors.full_messages.push("There are no images") }
+      return false
+    end
     if @item.save
       flash[:notice] = "商品を登録しました"
       redirect_to @item
     else
-      render 'new'
+      redirect_to new_item_path, flash: { error: @item.errors.full_messages }
     end
   end
 
@@ -59,7 +64,7 @@ class ItemsController < ApplicationController
 
   def params_item
     check_brand_name(params)
-    params.require(:item).permit(:category_id, :brand_id, :name, :explannation, :status, :shipper, :shipping_area, :lead_time, :price, :size, :shipping_method).merge(user_id: current_user.id)
+    params.require(:item).permit(:category_id, :brand_id, :name, :explannation, :status, :shipper, :shipping_area, :lead_time, :price, :size, :shipping_method, images_attributes:[ :id, :image, :_destroy ]).merge(user_id: current_user.id)
   end
 
   def check_brand_name(params)
