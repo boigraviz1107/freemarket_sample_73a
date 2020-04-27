@@ -6,5 +6,8 @@ class Item < ApplicationRecord
   belongs_to :brand
   belongs_to :category
   validates :user_id, :category_id, :brand_id, :name, :explannation, :status, :shipper, :shipping_area, :lead_time, :price, :size, :shipping_method, presence: true
+  # name文字数バリデーション要
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 end
 
