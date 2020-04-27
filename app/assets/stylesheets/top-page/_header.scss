@@ -1,5 +1,95 @@
 header {
-  h1 {
-    background-color: red;
+  $black: #333;
+  @mixin flex {
+    display: flex;
+    align-items: center;
+  }
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  padding: 0 60px;
+  width: 83%;
+  margin: 0 auto;
+  .headerInner {
+    padding-top: 15px;
+    width: 100%;
+    &__mainHeader {
+      @include flex;
+      justify-content: space-between;
+      margin: 0 18px;
+      &__linkArea {
+        padding-bottom: 10px;
+        padding-right: 30px;
+        display: block;
+        &__image {
+          width: 140px;
+          vertical-align: bottom;
+        }
+      }
+      &__seachArea {
+        width: 100%;
+        @include flex;
+        padding-bottom: 5px;
+        &__form {
+          width: 100%;
+          @include flex;
+          &__input {
+            height: 36px;
+            width: 100%;
+            padding-left: 5px;
+          }
+          &__submitArea {
+            position: relative;
+            width: 37px;
+            height: 36px;
+            &__submit {
+              border: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #3CCACE;
+              cursor: pointer;
+              z-index: 10;
+            }
+            &__icon {
+              width: 19.77px;
+              position: absolute;
+              right: 8px;
+              top: 8px;
+              vertical-align: bottom;
+            }
+          }
+        }
+      }
+    }
+    &__nav {
+      @include flex;
+      justify-content: space-between;
+      padding: 6px 0 10px 0;
+      margin: 0 18px;
+      color: $black;
+      font-size: 14px;
+      a {
+        color: $black;
+        text-decoration: none;
+      }
+      &__leftItems {
+        display: flex;
+        height: 32px;
+        a:hover {
+          color:#ffb340;
+        }
+        &__category {
+          padding-right: 30px;
+        }
+        &__brand {          
+          padding-left: 16px;
+        }
+      }
+      &__rightItems {
+        display: flex;
+        height: 32px;
+        &__signup , &__mypage{
+          padding-left: 16px;
+        }
+      }
+    }
   }
 }

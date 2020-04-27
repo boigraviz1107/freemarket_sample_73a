@@ -1,5 +1,280 @@
-.topMain {
-  h1 {
-    background-color: green;
+$frema: #3CCACE;
+@mixin appWidth($width, $opacity) {
+  width: $width;
+  &:hover{
+    opacity: $opacity;
+  }
+}
+a{
+  text-decoration: none;
+}
+
+main {
+  .mainTop{
+    height: 560px;
+    width: 100%;
+    background-image: url(/images/pict/bg-mainVisual-pict_pc.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &__content{
+      padding: 100px 80px;
+      color: white;
+      &__boxtitle{
+        padding-top: 100px;
+        font-size: 55px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+      &__text{
+        font-size: 20px;
+        line-height: 30px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        margin: 20px 0;
+      }
+      &__btn{
+        a{
+          img{
+            @include appWidth($width: 200px, $opacity: 0.7);
+          }
+        }
+      }
+    }
+  }
+  .topIntro{
+    width: 100%;
+    padding: 60px 20px;
+    &__boxtitle{
+      color: black;
+      font-size: 26px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+      position: relative;
+      margin-bottom: 30px;
+    }
+    &__boxtitle::after{
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: $frema;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-40px);
+    }
+    &__images{
+      margin-top: 20px;
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      display: flex;
+      text-align: center;
+      &__imageGroup{
+        margin-right: 55px;
+        position: relative;
+        &__image{
+          img{
+            width: 100%;
+          }
+          p{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            background-color: $frema;
+            border-radius: 5px;
+            color: white;
+          }
+        }
+        &__text{
+          margin-top: 20px;
+          &__top{
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            span{
+              color: $frema;
+            }
+          }
+          &__bottom{
+            font-size: 18px;
+            line-height: 30px;
+          }
+          .textLeft{
+            text-align: left;
+          }
+        }
+      }
+      .lastImage{
+        margin-right: 0;
+      }
+    }
+  }
+  .topMiddle{
+    height: 400px;
+    width: 100%;
+    background-image: url(/images/pict/bg-topMiddleDl-pict.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom right;
+    &__content{
+      color: white;
+      padding: 80px 200px;
+      &__boxtitle{
+        padding-top: 20px;
+        font-size: 30px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.5);
+      }
+      &__text{
+        font-size: 18px;
+        margin: 20px 0;
+        text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      }
+      &__btn{
+        a{
+          img{
+            @include appWidth($width: 200px, $opacity: 0.5);
+          }
+        }
+  
+      }
+    }
+  }
+  .topExpain{
+    width: 100%;
+    padding: 60px 20px;
+    &__boxtitle{
+      color: black;
+      font-size: 26px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+      position: relative;
+      margin-bottom: 30px;
+    }
+    &__boxtitle::after{
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: $frema;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-40px);
+    }
+    &__images{
+      margin-top: 20px;
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      display: flex;
+      text-align: center;
+      &__imageGroup{
+        margin-right: 55px;
+        &__image{
+          img{
+            width: 73%;
+          }
+        }
+        &__text{
+          margin-top: 20px;
+          &__top{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            span{
+              color: $frema;
+            }
+          }
+          &__bottom{
+            font-size: 16px;
+            line-height: 30px;
+            text-align: left;
+          }
+          .textLeft{
+            
+          }
+        }
+      }
+      .lastImage{
+        margin-right: 0;
+      }
+    }
+  }
+  .pickupBlock{
+    padding: 80px 0 20px 0;
+    background-color: #f8f8f8;
+    &__boxtitle{
+      &__top{
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.4;
+        font-weight: bold;
+      }
+      &__bottom{
+        text-align: center;
+        a{
+          color: $frema;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+    }
+    &__images{
+      width: 780px;
+      margin: 28px auto;
+      display: flex;
+      justify-content: space-around;
+      &__image{
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        display: inline-block;
+        margin-right: 40px;
+        &:hover{
+          opacity: 0.5;
+        }
+        &__list{
+          &__figure{
+            width: 220px;
+            height: 150px;
+            text-align: center;
+            img{
+              width: 70%;
+              object-fit: cover;
+            }
+          }
+          &__name{
+            margin-top: 10px;
+            padding: 0 15px;
+            font-weight: bold;
+          }
+          &__content{
+            padding: 0 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            &__price{
+              &__top{
+                font-weight: bold;
+              }
+              &__bottom{
+                font-size: 10px;
+              }
+            }
+            &__favorite{
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .lastImage{
+        margin-right: 0;
+      }
+    }
   }
 }

@@ -1,0 +1,38 @@
+@mixin appWidth($width, $opacity) {
+  width: $width;
+  &:hover{
+    opacity: $opacity;
+  }
+}
+
+.appDl{
+  height: 400px;
+  background-image: url(/images/pict/bg-appBanner-pict.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &__content{
+    color: white;
+    padding: 100px 40px;
+    width: 100%;
+    text-align: center;
+    &__top{
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__middle{
+      font-size: 35px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,1);
+      margin: 20px 0;
+    }
+    &__btn{
+      a{
+        img{
+          @include appWidth($width: 180px, $opacity: 0.2);
+        }
+      }
+    }
+  }
+}
