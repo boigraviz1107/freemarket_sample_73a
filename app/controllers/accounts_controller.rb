@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
       # [root_path]をマイページのpathに書き換えてください
     else
       flash.now[:alert] = '保存できてませんよー'
-      render new_account_path 
+      render :new
     end
   end
 
@@ -20,6 +20,6 @@ class AccountsController < ApplicationController
 
   private
   def account_params
-    params.require(:account).permit(:post_num, :prefecture, :city, :city_num, :building, :phone_num).merge(user_id: current_user.id)
+    params.require(:account).permit(:post_num, :prefecture_id, :city, :city_num, :building, :phone_num).merge(user_id: current_user.id)
   end
 end
