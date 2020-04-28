@@ -1,0 +1,11 @@
+main {
+  background-color: #eee;
+  .both{
+    display: flex;
+    padding: 40px 200px;
+    .cardCreate {
+      width: 700px;
+      margin: 10px;
+    }
+  }
+}
