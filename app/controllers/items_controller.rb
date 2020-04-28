@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :has_user?, only: %i(edit update destroy)
 
   def index
+    @items = Item.all.order(created_at: "DESC")
   end
 
   def show

@@ -1,0 +1,16 @@
+.itemIndex
+  .itemIndex__title
+    商品一覧
+  .itemIndex__items
+    -# 商品詳細ページへのリンク
+    - @items.each do |item|
+      = link_to "#" do
+        .itemIndex__items__item
+          -# &__imageと&__priceをposition relative activeで重ねちゃってください
+          .itemIndex__items__item__imageGroup
+            .itemIndex__items__item__imageGroup__image
+              = image_tag item.images.first.image.url, size: "300x250"
+            .itemIndex__items__item__imageGroup__price
+              = item.price
+          .itemIndex__items__item__name
+            = item.name
