@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :has_user?, only: %i(edit update destroy)
 
   def index
+    @items = Item.all.order(created_at: "DESC")
   end
 
   def show
@@ -16,7 +17,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_item)
-    binding.pry
+    # binding.pry
     unless @item.images.present?
       @item.valid?
       redirect_to new_item_path, flash: { error: @item.errors.full_messages.push("There are no images") }

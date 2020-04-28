@@ -1,2 +1,22 @@
-%h1 Categories#index
-%p Find me in app/views/categories/index.html.haml
+.catedory
+  .category__index
+    .category__index__title
+      カテゴリ一覧
+    - @categories.each do |category|
+      .category__index__one
+        = category.name
+
+  .category__contents
+    .category__contents__content
+      - @categories.each do |parent|
+        .category__contents__content__list
+          = parent.name
+          .category__contents__content__list__parentLink
+            = link_to "すべて", category_path(parent.id)
+          .category__contents__content__list__child
+            - parent.children.each do |child|
+              = child.name
+              .category__contents__content__list__child__grandchild
+                = link_to "すべて", category_path(child.id)
+                - child.children.each do |grandchild|
+                  = link_to "#{grandchild.name}", category_path(grandchild.id)
