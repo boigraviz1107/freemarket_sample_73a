@@ -1,0 +1,26 @@
+main {
+  background-color: #eee;
+  .both{
+    display: flex;
+    padding: 40px 200px;
+    .logout {
+      width: 700px;
+      height: 250px;
+      margin: 10px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__text {
+        text-align: center;
+        background-color: red;
+        width: 300px;
+        height: 50px;
+        line-height: 50px;
+        &__sentence {
+          a{color: white;}
+        }
+      }
+    }
+  }
+}

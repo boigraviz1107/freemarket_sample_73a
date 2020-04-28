@@ -1,0 +1,78 @@
+%main
+  .both
+    = render "sideBar"
+    .content
+      .content__userIcon
+        =link_to "#" do
+          .content__userIcon__wrap
+            .content__userIcon__top
+              .content__userIcon__top__name
+                みつふじ
+            .content__userIcon__under
+              .content__userIcon__under__eva
+                評価 5
+              .content__userIcon__under__item
+                出品数 5
+      .content__wrap
+        %ul.content__notifi__group
+          %li.content__notifi__group__list.is_active
+            お知らせ
+          %li.content__notifi__group__list
+            やることリスト
+        .content__notifi__second
+          %ul.content__notifi__tab
+            %li.content__notifi__sub.is_showing
+              %ul.content__notifi__under
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    事務局からのお知らせ
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    事務局からのお知らせ２
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    事務局からのお知らせ３
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    事務局からのお知らせ４
+                %li.content__notifi__under__list.mypage_go_list
+                  =link_to "#" do
+                    一覧を見る
+            %li.content__notifi__sub
+              %ul.content__notifi__under
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    ヤルことリスト
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    ヤルことリスト２
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    ヤルことリスト３
+                %li.content__notifi__under__list
+                  =link_to "#" do
+                    ヤルことリスト４
+                %li.content__notifi__under__list.mypage_go_list
+                  =link_to "#" do
+                    一覧を見る
+      .content__deal
+        %h2.content__deal__title
+          購入した商品
+        %ul.content__deal__group
+          %li.content__deal__group__list.active
+            取引中
+          %li.content__deal__group__list
+            過去の取引
+        %ul.content__deal__tab
+          %li.content__deal__sub.showing
+            %ul.content__deal__tab__group
+              %li.content__deal__tab__group__list
+                payapayapaya
+              %li.content__deal__tab__group__list
+                payapayapaya
+          %li.content__deal__sub
+            %ul.content__deal__tab__group
+              %li.content__deal__tab__group__list
+                へのへのもへじ
+              %li.content__deal__tab__group__list
+                へのへのもへじ
