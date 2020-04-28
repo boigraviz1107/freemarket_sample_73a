@@ -13,11 +13,22 @@ main {
             border-top: solid 1px #eee;
             a{color: black;}
             p:hover {background-color: #fafafa;}
+            .fas.fa-angle-right:hover {opacity: 1.0;}
             height: 50px;
             line-height: 50px;
             font-size: smaller;
+            position: relative;
             &__detail {
               padding-left: 10px;
+              .fas.fa-angle-right {
+                position: absolute;
+                right: 40px;
+                top: 20px;
+                opacity: 0.3;
+              }
+              // .fas.fa-angle-right:hover {
+              //   opacity: 1.0;
+              // }
             }
           }
         }
