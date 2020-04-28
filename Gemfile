@@ -91,3 +91,4 @@ gem 'active_hash'
 gem 'gretel'
 gem 'ancestry'
 gem 'payjp'
+gem 'recaptcha', require: "recaptcha/rails"
