@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_item)
-    # binding.pry
     unless @item.images.present?
       @item.valid?
       redirect_to new_item_path, flash: { error: @item.errors.full_messages.push("There are no images") }
