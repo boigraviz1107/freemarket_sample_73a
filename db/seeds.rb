@@ -112,3 +112,9 @@ User.create!(nickname:"Jhjh", birth_date:"1992-10-1",email:"kkk@gmail.com",passw
 for i in 1..140
   Item.create!(user_id:1,category_id:300,brand_id:1,name:"Item#{i}",explannation:"説明#{i}",status:1,shipper:true,shipping_area:2,lead_time:2,price:1000,size:i,shipping_method:1)
 end
+
+  Image.create!(image: File.open("#{Rails.root}/public/images/pict/pose_dance_ukareru_woman.png"), item_id:1)
+
+  Image.create!(image: File.open("#{Rails.root}/public/images/pict/pose_dance_ukareru_woman.png"), item_id:1)
+
+  Image.create!(image: File.open("#{Rails.root}/public/images/pict/pose_dance_ukareru_woman.png"), item_id:1)
