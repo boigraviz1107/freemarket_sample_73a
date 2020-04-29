@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_targer, only: %i(show edit update destroy)
+  before_action :set_item, only: %i(show edit update destroy)
   before_action :authenticate_user!, only: %i(new update create edit destroy)
   before_action :has_user?, only: %i(edit update destroy)
 
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   private
-  def set_targer
+  def set_item
     @item = Item.find(params[:id])
   end
 
