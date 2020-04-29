@@ -1,0 +1,45 @@
+.items
+  .items__name
+    = @item.name
+  .items__images
+    = image_tag @item.images[1].image.url , size: "300x250"
+    - if @item.images.count >= 2
+      - for i in 1..(@item.images.count-1)
+        = image_tag @item.images[i].image.url , size: "100x150"
+  .items__price
+    = @item.price
+  
+  .items__seller
+    = @item.user.nickname 
+  .items__category
+    = @item.category.name
+  .item__bland
+    = @item.brand.name
+  .items__size
+    = @item.size
+  .items__status
+    = @item.status
+  .items__shipper
+    = @item.shipper
+  .items__shipping_method
+    = @item.shipping_method
+  .items__shipping_area
+    = @item.shipping_area
+  .item__lead_time
+    = @item.lead_time
+
+  .items__price
+    = @item.price
+  
+- if user_signed_in? && current_user.id != @item.user.id
+  = form_with(model: @order, local: true) do |f|
+    = f.submit "購入画面に進む"
+
+   
+.items__explannation
+  = @item.explannation
+- if user_signed_in? && current_user.id == @item.user.id
+  = link_to "編集する" , edit_item_path(@item) 
+  = link_to "削除する" , "#"
+
+
