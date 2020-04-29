@@ -1,6 +1,8 @@
 .itemIndex
   .itemIndex__title
-    商品一覧
+    = @brand.name
+  .itemIndex__subtitle
+    = "#{@brand.name}の商品一覧"
   .itemIndex__items
     -# 商品詳細ページへのリンク
     - @items.each do |item|

@@ -105,3 +105,10 @@ baby_meals.children.create([{:name=>"ミルク"}, {:name=>"ベビーフード"},
 baby_houses.children.create([{:name=>"ベッド"}, {:name=>"布団/毛布"},{:name=>"イス"},{:name=>"たんす"},{:name=>"その他"}])
 baby_toys.children.create([{:name=>"おふろのおもちゃ"}, {:name=>"がらがら"},{:name=>"オルゴール"},{:name=>"ベビージム"},{:name=>"手押し車/カタカタ"},{:name=>"知育玩具"},{:name=>"その他"}])
 baby_events.children.create([{:name=>"お宮参り用品"}, {:name=>"お食い初め用品"},{:name=>"アルバム"},{:name=>"手形/足形"},{:name=>"その他"}])
+for i in 1..20
+  Brand.create(name:"A#{i}")
+end
+User.create!(nickname:"Jhjh", birth_date:"1992-10-1",email:"kkk@gmail.com",password:"12345678",password_confirmation:"12345678",last_name:"田中",last_name_hira:"たなか",first_name:"真司", first_name_hira:"しんじ")
+for i in 1..140
+  Item.create!(user_id:1,category_id:300,brand_id:1,name:"Item#{i}",explannation:"説明#{i}",status:1,shipper:true,shipping_area:2,lead_time:2,price:1000,size:i,shipping_method:1)
+end
