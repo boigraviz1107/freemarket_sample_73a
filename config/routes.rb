@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :categories, only: %i(show index)
   resources :brands, only: %i(index show)
   resources :categories, only: %i(index show)
+  resources :users, only: %i(index)
+  get 'users/card', to: 'users#card'
+  get 'users/logout', to: 'users#logout'
 end
