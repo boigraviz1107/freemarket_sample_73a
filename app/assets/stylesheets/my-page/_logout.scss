@@ -18,7 +18,9 @@ main {
         height: 50px;
         line-height: 50px;
         &__sentence {
-          a{color: white;}
+          a{
+            color: white;
+          }
         }
       }
     }

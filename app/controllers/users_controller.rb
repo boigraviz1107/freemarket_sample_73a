@@ -8,8 +8,4 @@ class UsersController < ApplicationController
 
   def card
   end
-
-  def cardCreate
-    # カードの登録用アクション(仮)
-  end
 end
