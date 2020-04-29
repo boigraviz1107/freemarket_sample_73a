@@ -51,6 +51,7 @@ main {
         justify-content: center;
         background-color: white;
         a{color: black;}
+        a:hover {opacity: 0.5;}
         &__top {
           text-align: center;
         }
@@ -71,13 +72,17 @@ main {
           width: 100%;
           height: 80px;
           background-color: #eee;
+          .content__notifi__group__list:hover {opacity: 0.5;}
           &__list {
             line-height: 80px;
             width: 100%;
             text-align: center;
+            font-weight: bold;
           }
           .is_active {
             background-color: white;
+            border-top: solid;
+            border-top-color: red;
           }
         }
         .content__notifi__second {
@@ -90,16 +95,22 @@ main {
             .is_showing{
               display: block;
               .content__notifi__under {
+                .content__notifi__under__list:hover {opacity: 0.5;}
                 &__list {
                   height: 80px;
                   line-height: 80px;
                   text-align: center;
-                  margin: 10px;
+                  // margin: 10px;
                   display: block;
                   a{color: black;}
+                  border-bottom: solid 1px #eee;
                 }
                 .mypage_go_list {
                   background-color: #eee;
+                  margin: 20px;
+                  font-size: smaller;
+                  height: 60px;
+                  line-height: 60px;
                 }
               }
             }
@@ -125,14 +136,18 @@ main {
           width: 100%;
           justify-content: space-evenly;
           background-color: #eee;
+          .content__deal__group__list:hover {opacity: 0.5;}
           &__list {
             height: 80px;
             line-height: 80px;
             width: 100%;
             text-align: center;
+            font-weight: bold;
           }
           .active {
             background-color: white;
+            border-top: solid;
+            border-top-color: red;
           }
         }
         &__tab {
@@ -145,12 +160,14 @@ main {
           .showing {
             display: block;
             .content__deal__tab__group {
+              .content__deal__tab__group__list:hover {opacity: 0.5;}
               &__list {
                 height: 80px;
                 line-height: 80px;
                 text-align: center;
-                margin: 10px;
+                // margin: 10px;
                 display: block;
+                border-bottom: solid 1px #eee;
               }
             }
           }
