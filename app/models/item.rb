@@ -12,5 +12,17 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than:	299, less_than: 10000000 }
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  validates_associated :images
+  validates :images, presence: true
+
+  def how_many_lead_time?
+    ['1~2日で発送', '2~3日で発送', '4~7日で発送'][self.lead_time]
+  end
+
+  def which_shipper?
+    self.shipper ? "送料込み(出品者負担)" : "着払い(購入者負担)"
+  end
+
 end
 

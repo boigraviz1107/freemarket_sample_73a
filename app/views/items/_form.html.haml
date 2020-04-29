@@ -50,7 +50,7 @@
     %p
       = f.label :shipping_method, "配送の方法"
       %br/
-      = f.select :shipping_method,['未定', 'らくらくメルカリ', 'ゆうメール'] , {include_blank: '選択して下さい'}
+      = f.select :shipping_method,['未定','らくらくメルカリ','ゆうメール','レターパック','普通郵便(定形、定形外)','クロネコヤマト','ゆうパック','クリックポスト','ゆうパケット']
   .field
     %p
       = f.label :shipping_area, "発送元の地域"
@@ -60,7 +60,7 @@
     %p
       = f.label :lead_time, "発送までの日数"
       %br/
-      = f.select :lead_time, ['1~2日で発送', '2~3日で発送', '4~7日で発送'], {include_blank: '選択して下さい'}
+      = f.select :lead_time, [['1~2日で発送', 0], ['2~3日で発送', 1], ['4~7日で発送', 2]], {include_blank: '選択して下さい'}
   .field
     %p
       = f.label :price, "販売価格"
