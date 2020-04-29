@@ -1,33 +1,42 @@
-.address-__form
-= form_with(model: @account, local: true) do |f|
-  .field
-    = f.label :郵便番号
-    %br/
-    = f.text_field :post_num, placeholder: :post_num
-  .field
-    = f.label :都道府県
-    %br/
-    = f.text_field :prefecture, placeholder: :prefecture
-  .field
-    = f.label :市区町村
-    %br/
-    = f.text_field :city, placeholder: :city
-  .field
-    = f.label :番地
-    %br/
-    = f.text_field :city_num, placeholder: :city_num
-  .field
-    = f.label :建物名
-    %br/
-    = f.text_field :city_num, placeholder: :building
-  .field
-    = f.label :電話番号
-    %br/
-    = f.text_field :city_num, placeholder: :phone_num
-  .field 
-    = f.submit "登録する"
-    -# [.field]クラス名を変更・設定してからマークアップをお願いします
-    -# 各formの最後にクラス名の付与をお願いします
+.address__header
+  %h2 発送元・お届け先住所変更
+.address__form
+  = form_with(model: @account, local: true) do |f|
+    .field
+      .field__title
+        = f.label :郵便番号, class: :field__title__label
+        .must 必須
+      = f.text_field :post_num, placeholder: :"例)123-4567", class: :input_form
+    .field
+      .field__title
+        = f.label :都道府県, class: :field__title__label
+        .must 必須
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択してください", class: :input_form
+      = icon('fas', 'angle-down', class: 'icon-arrow-bottom')
+    .field
+      .field__title
+        = f.label :市区町村, class: :field__title__label
+        .must 必須
+      = f.text_field :city, placeholder: :"例)横浜市緑区", class: :input_form
+    .field
+      .field__title
+        = f.label :番地, class: :field__title__label
+        .must 必須
+      = f.text_field :city_num, placeholder: :"例)青山1-1-1", class: :input_form
+    .field
+      .field__title
+        = f.label :建物名, class: :field__title__label
+        .any 任意
+      = f.text_field :building, placeholder: :"例)柳ビル103", class: :input_form
+    .field
+      .field__title
+        = f.label :電話番号, class: :field__title__label
+        .any 任意
+      = f.text_field :phone_num, placeholder: :"例)09012345678", class: :input_form
+    .field 
+      = f.submit "登録する", class: :submit_btn
+      -# [.field]クラス名を変更・設定してからマークアップをお願いします
+      -# 各formの最後にクラス名の付与をお願いします
 
 
 
