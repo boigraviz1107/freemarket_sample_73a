@@ -6,14 +6,12 @@
         = @item.name
       .showMain__content__itemBox__imageArea
         .showMain__content__itemBox__imageArea__firstImage
-          -# = image_tag @item.images[1].image.url , size: "300x250"
-          = image_tag "/images/pict/item_image.png" , size: "300x250"
+          = image_tag @item.images[0].image.url , size: "300x250"
         - if @item.images.count >= 2
           %ul.showMain__content__itemBox__imageArea__otherImages
             - for i in 1..(@item.images.count-1)
-              -# = image_tag @item.images[i].image.url , size: "100x150"
+              = image_tag @item.images[i].image.url , size: "100x150"
               %li.showMain__content__itemBox__imageArea__otherImages__image
-                = image_tag "/images/pict/item_image.png" , size: "100x150"
       .showMain__content__itemBox__price
         .showMain__content__itemBox__price__value
           ¥
