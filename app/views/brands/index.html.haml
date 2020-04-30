@@ -8,7 +8,7 @@
 
   .bategory__contents
     .bategory__contents__content
-      - @brands.each do |brand|
-        = link_to brand_path(brand.id) do
-          .bategory__contents__content__list
+      .bategory__contents__content__list
+        - @brands.each do |brand|
+          = link_to brand_path(brand.id), class: :bategory__contents__content__list__name do
             = brand.name

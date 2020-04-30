@@ -18,6 +18,6 @@
             - parent.children.each do |child|
               = child.name
               .category__contents__content__list__child__grandchild
-                = link_to "すべて", category_path(child.id), class: :catecgory__contents__content__list__child__grandchild__name
+                = link_to "すべて", category_path(child.id), class: :category__contents__content__list__child__grandchild__name
                 - child.children.each do |grandchild|
                   = link_to "#{grandchild.name}", category_path(grandchild.id), class: :category__contents__content__list__child__grandchild__name
