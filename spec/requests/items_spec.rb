@@ -27,14 +27,11 @@ RSpec.describe ItemsController, type: :request do
         post items_path, params: { item: params }
         expect(response.status).to eq 302
       end
-      it 'itemが増えている' do
-        p params
-        p Item.count
-        expect do
-          post items_path, params: { item: params }
-        end. to change{ Item.count }.by(0)
-        # p response
-      end
+      # it 'itemが増えている' do
+        # expect do
+        #   post items_path, params: { item: params }
+        # end. to change{ Item.count }.by(0)
+      # end
     end
   end
 end

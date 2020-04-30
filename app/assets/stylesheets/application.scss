@@ -1,5 +1,4 @@
 @import "reset";
-@import "items";
 @import "top-page/header";
 @import "top-page/index";
 @import "top-page/appDL";
@@ -17,5 +16,7 @@
 @import "categories/show";
 @import "brands/index";
 @import "brands/show";
+@import "items/show";
+@import "shared/breadCrumbs";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
