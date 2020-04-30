@@ -1,7 +1,7 @@
-.catedory
+.category
   .category__index
     .category__index__title
-      カテゴリ一覧
+      カテゴリー一覧
     - @categories.each do |category|
       .category__index__one
         = category.name
@@ -10,13 +10,14 @@
     .category__contents__content
       - @categories.each do |parent|
         .category__contents__content__list
-          = parent.name
+          %h1
+            = parent.name
           .category__contents__content__list__parentLink
-            = link_to "すべて", category_path(parent.id)
+            = link_to "すべて", category_path(parent.id), class: :category__contents__content__list__parentLink__name
           .category__contents__content__list__child
             - parent.children.each do |child|
               = child.name
               .category__contents__content__list__child__grandchild
-                = link_to "すべて", category_path(child.id)
+                = link_to "すべて", category_path(child.id), class: :catecgory__contents__content__list__child__grandchild__name
                 - child.children.each do |grandchild|
-                  = link_to "#{grandchild.name}", category_path(grandchild.id)
+                  = link_to "#{grandchild.name}", category_path(grandchild.id), class: :category__contents__content__list__child__grandchild__name
