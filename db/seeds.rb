@@ -129,6 +129,7 @@ end
 20.times do
   Brand.create(name: Faker::Space.galaxy)
 end
+
 # User
 for i in 1..4
   User.create!(
@@ -143,9 +144,10 @@ for i in 1..4
     first_name_hira: "しんじ"
   )
 end
+
 # Item
-30.times do
-  Item.create!(
+for i in 1..15
+  item = Item.new(
     user_id: rand_math(1,(User.count)),
     category_id: 300,
     brand_id: rand_math(1,(Brand.count)),
@@ -159,8 +161,8 @@ end
     size: Faker::Lorem.word,
     shipping_method: shipping_method[rand_math(0,(shipping_method.count - 1))]
   )
-end
-# Image
-3.times do
-  Image.create!(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id:1)
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.save!
 end
