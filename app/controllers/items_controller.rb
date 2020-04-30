@@ -17,11 +17,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_item)
-    unless @item.images.present?
-      @item.valid?
-      redirect_to new_item_path, flash: { error: @item.errors.full_messages.push("There are no images") }
-      return false
-    end
     if @item.save
       flash[:notice] = "商品を登録しました"
       redirect_to @item
