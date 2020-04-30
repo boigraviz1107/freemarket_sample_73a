@@ -1,18 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 # Categories
 # 親要素
+
 lady = Category.create(:name=>"レディース")
 men = Category.create(:name=>"メンズ")
 baby = Category.create(:name=>"ベビー・キッズ")
 other = Category.create(:name=>"その他")
-
 
 # 子要素
 lady_tops = lady.children.create(:name=>"トップス")
@@ -105,10 +97,72 @@ baby_meals.children.create([{:name=>"ミルク"}, {:name=>"ベビーフード"},
 baby_houses.children.create([{:name=>"ベッド"}, {:name=>"布団/毛布"},{:name=>"イス"},{:name=>"たんす"},{:name=>"その他"}])
 baby_toys.children.create([{:name=>"おふろのおもちゃ"}, {:name=>"がらがら"},{:name=>"オルゴール"},{:name=>"ベビージム"},{:name=>"手押し車/カタカタ"},{:name=>"知育玩具"},{:name=>"その他"}])
 baby_events.children.create([{:name=>"お宮参り用品"}, {:name=>"お食い初め用品"},{:name=>"アルバム"},{:name=>"手形/足形"},{:name=>"その他"}])
-for i in 1..20
-  Brand.create(name:"A#{i}")
+
+
+require 'faker'
+Faker::Config.locale = 'ja'
+status = ['新品、未使用', '未使用に近い', '目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い']
+shipping_method = [
+  '未定',
+  'らくらくメルカリ',
+  'ゆうメール',
+  'レターパック',
+  '普通郵便(定形、定形外)',
+  'クロネコヤマト',
+  'ゆうパック',
+  'クリックポスト',
+  'ゆうパケット'
+]
+
+# 乱数取得
+def rand_math(min, max)
+  return Random.new().rand(min..max)
 end
-User.create!(nickname:"Jhjh", birth_date:"1992-10-1",email:"kkk@gmail.com",password:"12345678",password_confirmation:"12345678",last_name:"田中",last_name_hira:"たなか",first_name:"真司", first_name_hira:"しんじ")
-for i in 1..140
-  Item.create!(user_id:1,category_id:300,brand_id:1,name:"Item#{i}",explannation:"説明#{i}",status:1,shipper:true,shipping_area:2,lead_time:2,price:1000,size:i,shipping_method:1)
+
+# 適当に切り捨て
+def math_floor(price)
+  price = price.to_s.split("")
+  return (price[0] + price[1] + (price[2..(price.count-1)].map{|i|i=0}.join)).to_i
+end
+
+# Brand
+20.times do
+  Brand.create(name: Faker::Space.galaxy)
+end
+
+# User
+for i in 1..4
+  User.create!(
+    nickname: Faker::Lorem.word  + Faker::Name.last_name,
+    birth_date: Faker::Date.in_date_period,
+    email: "test#{i}@gmail.com",
+    password: "12345678",
+    password_confirmation:"12345678",
+    last_name: Faker::Name.last_name,
+    last_name_hira: "たなか",
+    first_name: Faker::Name.first_name,
+    first_name_hira: "しんじ"
+  )
+end
+
+# Item
+for i in 1..15
+  item = Item.new(
+    user_id: rand_math(1,(User.count)),
+    category_id: 300,
+    brand_id: rand_math(1,(Brand.count)),
+    name: Faker::Company.suffix + Faker::Games::Pokemon.name,
+    explannation: Faker::Lorem.question(word_count: 20),
+    status: status[rand_math(0,(status.count - 1))],
+    shipper: Faker::Boolean.boolean,
+    shipping_area: Prefecture.find(rand_math(1,Prefecture.count)).name,
+    lead_time: rand_math(0,2),
+    price: math_floor(rand_math(300,9999999)),
+    size: Faker::Lorem.word,
+    shipping_method: shipping_method[rand_math(0,(shipping_method.count - 1))]
+  )
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+  item.save!
 end

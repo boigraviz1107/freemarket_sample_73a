@@ -93,3 +93,5 @@ gem 'gretel'
 gem 'ancestry'
 gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
+
+gem 'fog-aws'

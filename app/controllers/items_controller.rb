@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i(show edit update destroy)
   before_action :authenticate_user!, only: %i(new update create edit destroy)
-  before_action :has_user?, only: %i(edit update destroy)
+  before_action :redirect_not_item_user, only: %i(edit update destroy)
 
   def index
     @items = Item.all.order(created_at: "DESC")
@@ -19,17 +19,15 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_item)
-    unless @item.images.present?
-      @item.valid?
-      redirect_to new_item_path, flash: { error: @item.errors.full_messages.push("There are no images") }
-      return false
-    end
     if @item.save
       flash[:notice] = "商品を登録しました"
       redirect_to @item
     else
       redirect_to new_item_path, flash: { error: @item.errors.full_messages }
     end
+  end
+
+  def show
   end
 
   def edit
@@ -60,7 +58,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def has_user?
+  def redirect_not_item_user
     redirect_to root_path unless @item.user_id == current_user.id
   end
 
@@ -81,4 +79,6 @@ class ItemsController < ApplicationController
     end
     return params
   end
+
+
 end
