@@ -119,6 +119,7 @@ def rand_math(min, max)
   return Random.new().rand(min..max)
 end
 
+
 # 適当に切り捨て
 def math_floor(price)
   price = price.to_s.split("")
@@ -166,3 +167,4 @@ for i in 1..15
   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
   item.save!
 end
+
