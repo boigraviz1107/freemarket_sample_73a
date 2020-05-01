@@ -31,26 +31,35 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @images = @item.images.includes(:item)
+    pht = @images.count
+    if pht === 1
+      2.times{ @item.images.build }
+    elsif pht === 2
+      1.times{ @item.images.build }
+    else
+      0.times{ @item.images.build }
+    end
   end
 
   def update
     if @item.update(params_item)
       flash[:notice] = "商品を更新しました"
-      redirect_to @item
+      redirect_to users_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    if @item.destroy
-      flash[:notice] = "商品を削除しました"
-      # redirect_to user_path #users#showができていればこちらに
-      redirect_to root_path
-    else
-      flash[:alert] = "エラーが発生しました"
-      redirect_back(fallback_location: root_path)
-    end
+      if @item.destroy
+        flash[:notice] = "商品を削除しました"
+        # redirect_to user_path #users#showができていればこちらに
+        redirect_to root_path
+      else
+        flash[:alert] = "エラーが発生しました"
+        redirect_back(fallback_location: root_path)
+      end
   end
 
   private
