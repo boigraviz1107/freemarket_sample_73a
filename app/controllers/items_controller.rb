@@ -12,7 +12,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    3.times{ @item.images.build }
+    @item.images.build 
+    @item.images.build 
+    @item.images.build 
   end
 
   def create
