@@ -15,8 +15,11 @@
         .itemIndex__items__item
           .itemIndex__items__item__imageGroup
             .itemIndex__items__item__imageGroup__image
-              = image_tag item.images.first.image.url, size: "300x250"
+              = image_tag item.images[0].image.url, size: "188x188"
             .itemIndex__items__item__imageGroup__price
+              ¥ 
               = item.price
           .itemIndex__items__item__name
             = item.name
+  .pagienate
+    = paginate @items

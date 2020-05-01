@@ -103,5 +103,9 @@ RSpec.describe Item, type: :model do
     it '画像が3枚保存されている' do
       expect{ item.save }.to change{ Image.count }.from(0).to(3)
     end
+    it '1枚も添付されていないと保存できない' do
+      item.images = []
+      expect(item).not_to  be_valid
+    end
   end
 end

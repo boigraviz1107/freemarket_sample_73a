@@ -1,48 +1,99 @@
-.items
-  .items__name
-    = @item.name
-  .items__images
-    = image_tag @item.images[1].image.url , size: "300x250"
-    - if @item.images.count >= 2
-      - for i in 1..(@item.images.count-1)
-        = image_tag @item.images[i].image.url , size: "100x150"
-  .items__price
-    = @item.price
-  
-  .items__seller
-    = @item.user.nickname 
-  .items__category
-    = @item.category.name
-  .item__bland
-    -if @item.brand_id.nil?
-      ブランドは不明です
-    -else
-      =@item.brand.name
-  .items__size
-    = @item.size
-  .items__status
-    = @item.status
-  .items__shipper
-    = @item.shipper
-  .items__shipping_method
-    = @item.shipping_method
-  .items__shipping_area
-    = @item.shipping_area
-  .item__lead_time
-    = @item.lead_time
-
-  .items__price
-    = @item.price
-  
-- if user_signed_in? && current_user.id != @item.user.id
-  = form_with(model: @order, local: true) do |f|
-    = f.submit "購入画面に進む"
-
-   
-.items__explannation
-  = @item.explannation
-- if user_signed_in? && current_user.id == @item.user.id
-  = link_to edit_item_path(@item) do
-    編集する
-  = link_to edit_item_path(@item) do
-    削除する
+= render '/shared/breadCrumbs'
+.showMain
+  .showMain__content
+    .showMain__content__itemBox
+      .showMain__content__itemBox__itemName
+        = @item.name
+      .showMain__content__itemBox__imageArea
+        .showMain__content__itemBox__imageArea__firstImage
+          = image_tag @item.images[0].image.url , size: "300x250"
+        - if @item.images.count >= 2
+          %ul.showMain__content__itemBox__imageArea__otherImages
+            - for i in 1..(@item.images.count-1)
+              = image_tag @item.images[i].image.url , size: "100x150"
+              %li.showMain__content__itemBox__imageArea__otherImages__image
+      .showMain__content__itemBox__price
+        .showMain__content__itemBox__price__value
+          ¥
+          = @item.price.to_s(:delimited)
+        .showMain__content__itemBox__price__option
+          (税込) 送料込み
+      - if user_signed_in? && current_user.id != @item.user.id
+        = form_with(model: @order, local: true, class: "showMain__content__itemBox__form") do |f|
+          = f.submit "購入画面に進む", class: "showMain__content__itemBox__form__submit"
+      .showMain__content__itemBox__ex
+        = simple_format(@item.explannation)
+      %table.showMain__content__itemBox__table
+        %tr.showMain__content__itemBox__table__sellerName
+          %th 出品者
+          %td
+            = @item.user.nickname
+        %tr.showMain__content__itemBox__table__category
+          %th カテゴリー
+          %td
+            = link_to @item.category.parent.parent.name, category_path(@item.category.parent.parent.id)
+            %br/
+            = link_to @item.category.parent.name, category_path(@item.category.parent.id)
+            %br/
+            = link_to @item.category.name, category_path(@item.category.id)
+        %tr.showMain__content__itemBox__table__brand
+          %th ブランド
+          %td
+            - unless @item.brand_id.nil?
+              = @item.brand.name
+        %tr.showMain__content__itemBox__table__size
+          %th 商品のサイズ
+          %td
+            = @item.size
+        %tr.showMain__content__itemBox__table__status
+          %th 商品の状態
+          %td
+            = @item.status
+        %tr.showMain__content__itemBox__table__shipper
+          %th 配送料の負担
+          %td
+            = @item.which_shipper?
+        %tr.showMain__content__itemBox__table__method
+          %th 配送の方法
+          %td
+            = @item.shipping_method
+        %tr.showMain__content__itemBox__table__area
+          %th 発送元の地域
+          %td
+            = @item.shipping_area
+        %tr.showMain__content__itemBox__table__time
+          %th 発送日の目安
+          %td
+            = @item.how_many_lead_time?
+      .showMain__content__itemBox__favoArea
+        .showMain__content__itemBox__favoArea__favo
+          ★ お気に入り 0
+        = link_to "#", class:"showMain__content__itemBox__favoArea__report" do
+          %i.fa.fa-flag
+          不適切な商品の通報
+      - if user_signed_in? && current_user.id == @item.user.id
+        .showMain__content__itemBox__sellerItem
+          = link_to "編集する" , edit_item_path(@item),class:"showMain__content__itemBox__sellerItem__edit btn"
+          = link_to "削除する" , item_path(@item),method: :delete, class: "showMain__content__itemBox__sellerItem__delete btn", data: { confirm:"商品を削除してよろしいですか?" }
+  = form_with(model: @comment, local: true, class: "showMain__content__commentArea") do |f|
+    = f.text_area :text, class: "showMain__content__commentArea__textArea"
+    %p.showMain__content__commentArea__message
+      相手のことを考え丁寧なコメントを心がけましょう。
+      %br/
+      不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %br/
+    = f.button class:"showMain__content__commentArea__submit" do
+      %i.fa.fa-comment
+      コメントする
+  .showMain__content__bacKOrNext
+    - unless @item == Item.first
+      = link_to item_path((@item.id - 1)),class:"showMain__content__bacKOrNext__back" do
+        %i.fa.fa-angle-left
+        前の商品
+    - unless @item == Item.last
+      = link_to item_path((@item.id.to_i + 1)),class:"showMain__content__bacKOrNext__next" do
+        後ろの商品
+        %i.fa.fa-angle-right
+  .showMain__content__categoryLink
+    = link_to category_path(@item.category.parent.parent.id) do
+      = "#{@item.category.parent.parent.name}をもっと見る"

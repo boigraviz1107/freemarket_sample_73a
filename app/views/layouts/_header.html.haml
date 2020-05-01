@@ -12,14 +12,14 @@
     .headerInner__nav
       .headerInner__nav__leftItems
         .headerInner__nav__leftItems__category
-          = link_to "カテゴリー", "#"
+          = link_to "カテゴリー", categories_path
         .headerInner__nav__leftItems__brand
-          = link_to "ブランド", "#"
+          = link_to "ブランド", brands_path
       .headerInner__nav__rightItems
         - if user_signed_in?
           .headerInner__nav__rightItems__logout
             = link_to "ログアウト", destroy_user_session_path, method: :delete
-          .headerInner__nav__rightItems__maypage
+          .headerInner__nav__rightItems__mypage
             = link_to "マイページ", users_path
         - else
           .headerInner__nav__rightItems__login

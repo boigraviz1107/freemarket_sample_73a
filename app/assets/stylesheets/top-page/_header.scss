@@ -62,7 +62,7 @@ header {
     &__nav {
       @include flex;
       justify-content: space-between;
-      padding: 6px 0 10px 0;
+      padding: 6px 0 4px 0;
       margin: 0 18px;
       color: $black;
       font-size: 14px;
@@ -86,7 +86,7 @@ header {
       &__rightItems {
         display: flex;
         height: 32px;
-        &__signup , &__mypage{
+        &__signup, &__mypage{
           padding-left: 16px;
         }
       }
