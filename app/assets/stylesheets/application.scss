@@ -1,5 +1,4 @@
 @import "reset";
-@import "items";
 @import "top-page/header";
 @import "top-page/index";
 @import "top-page/appDL";
@@ -13,5 +12,12 @@
 @import "my-page/card";
 @import "my-page/logout";
 @import "my-page/cardCreate";
+@import "categories/index";
+@import "categories/show";
+@import "brands/index";
+@import "brands/show";
+@import "items/show";
+@import "shared/breadCrumbs";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "my-page/product"

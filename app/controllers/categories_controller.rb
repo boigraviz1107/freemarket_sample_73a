@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   
   def show
     @category = Category.find(params[:id])
+    # @categories = Category.all.order("id ASC")
     @items = []
     if @category.is_root? && @category.is_childless? # 親も子もいない子
       @items = @category.items
@@ -26,6 +27,7 @@ class CategoriesController < ApplicationController
     else # 孫
       @items = @category.items
     end
+    @items = @items.page(params[:page]).per(6)
     # 新しい順にしたい
     # @items = @items.order(created_at: )
   end
