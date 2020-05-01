@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "商品を更新しました"
       redirect_to users_path
     else
-      render 'edit'
+      redirect_to edit_item_path(@item), flash: { error: @item.errors.full_messages }
     end
   end
 
