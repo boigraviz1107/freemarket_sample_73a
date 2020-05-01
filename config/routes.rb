@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   resources :users, only: %i(index)
   get 'users/card', to: 'users#card'
   get 'users/logout', to: 'users#logout'
-  # post 'items/:id/edit', to: 'items#show'
 end
