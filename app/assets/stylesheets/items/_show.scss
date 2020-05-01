@@ -39,8 +39,7 @@
           display: flex;
           &__image {
             img {
-              height: 87px;
-              object-fit: cover;
+                object-fit: contain;
             }
           }
         }

@@ -12,9 +12,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.build 
-    @item.images.build 
-    @item.images.build 
+    @item.images.build
+    @item.images.build
+    @item.images.build
   end
 
   def create
@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @brand_name = @item.brand ? @item.brand.name : ""
     @images = @item.images.includes(:item)
     pht = @images.count
     if pht === 1
@@ -45,7 +46,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update(params_item)
       flash[:notice] = "商品を更新しました"
-      redirect_to users_path
+      redirect_to @item
     else
       redirect_to edit_item_path(@item), flash: { error: @item.errors.full_messages }
     end

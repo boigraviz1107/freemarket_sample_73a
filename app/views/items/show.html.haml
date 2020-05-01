@@ -10,8 +10,8 @@
         - if @item.images.count >= 2
           %ul.showMain__content__itemBox__imageArea__otherImages
             - for i in 1..(@item.images.count-1)
-              = image_tag @item.images[i].image.url , size: "100x150"
               %li.showMain__content__itemBox__imageArea__otherImages__image
+                = image_tag @item.images[i].image.url , size: "100x150"
       .showMain__content__itemBox__price
         .showMain__content__itemBox__price__value
           ¥
