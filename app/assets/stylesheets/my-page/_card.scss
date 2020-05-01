@@ -24,6 +24,9 @@ main {
         align-items: center;
         margin: 10px;
         margin-top: -10px;
+        a {
+          color: white;
+        }
         &__text {
           height: 50px;
           width: 300px;
@@ -31,7 +34,6 @@ main {
           line-height: 50px;
           text-align: center;
           &__sentence {
-            a{color: white;}
           }
         }
         .fas.fa-credit-card {

@@ -11,7 +11,7 @@
         = link_to "#" do
           %img{src: "https://linkmaker.itunes.apple.com/assets/shared/badges/ja-jp/appstore-lrg.svg", alt: "AppStoreで入手"}/
         = link_to "#" do
-          %img{src: "images/google-play-badge.png"}/
+          = image_tag '/images/google-play-badge.png'
 
   .topIntro
     %h2.topIntro__boxtitle
@@ -200,7 +200,4 @@
                 (税込み)
             .pickupBlock__images__image__list__content__favorite
               ⭐︎23464
-
-= render '/layouts/itemsell'
-
 

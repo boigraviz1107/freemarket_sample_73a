@@ -4,17 +4,20 @@
   .itemIndex__subtitle
     = "#{@brand.name}の商品一覧"
   .itemIndex__items
-    -# 商品詳細ページへのリンク
     - @items.each do |item|
-      = link_to "#" do
+      = link_to item_path(item) do
         .itemIndex__items__item
-          -# &__imageと&__priceをposition relative activeで重ねちゃってください
           .itemIndex__items__item__imageGroup
             .itemIndex__items__item__imageGroup__image
               = image_tag item.images.first.image.url, size: "188x188"
             .itemIndex__items__item__imageGroup__price
-              = item.price
+              .itemIndex__items__item__imageGroup__price__value
+                ¥
+                = item.price.to_s(:delimited)
           .itemIndex__items__item__name
             = item.name
+            -# 出品順を確認するためにおいてます。
+            -# %br/
+            -# = item.created_at.strftime("%Y年%m月%d日 %H:%M")
   .pagienate
     = paginate @items
