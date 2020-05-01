@@ -16,8 +16,8 @@ class CategoriesController < ApplicationController
           # Item.where(category_id: indirect.id).order("created_at: DESC")
           @items.push(item)
         end
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(10)
       end
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(10)
     elsif @category.has_parent? && @category.has_children? # 子の時
       children = @category.children
       children.each do |child|
