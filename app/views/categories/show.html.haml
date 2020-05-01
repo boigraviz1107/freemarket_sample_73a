@@ -9,16 +9,16 @@
   .itemIndex__subtitle
     = "#{@category.name}の商品一覧"
   .itemIndex__items
-    -# 商品詳細ページへのリンク
     - @items.each do |item|
-      = link_to "#" do
+      = link_to item_path(item) do
         .itemIndex__items__item
           .itemIndex__items__item__imageGroup
             .itemIndex__items__item__imageGroup__image
               = image_tag item.images[0].image.url, size: "188x188"
             .itemIndex__items__item__imageGroup__price
-              ¥ 
-              = item.price
+              .itemIndex__items__item__imageGroup__price__value
+                ¥
+                = item.price.to_s(:delimited)
           .itemIndex__items__item__name
             = item.name
   .pagienate

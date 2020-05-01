@@ -11,6 +11,9 @@ main {
       display: flex;
       justify-content: center;
       align-items: center;
+      a{
+        color: white;
+      }
       &__text {
         text-align: center;
         background-color: red;
@@ -18,9 +21,6 @@ main {
         height: 50px;
         line-height: 50px;
         &__sentence {
-          a{
-            color: white;
-          }
         }
       }
     }
