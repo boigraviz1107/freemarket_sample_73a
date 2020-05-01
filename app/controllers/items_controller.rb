@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @images = @item.images.includes(:item)
     pht = @images.count
     if pht === 1
@@ -47,18 +46,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-      if @item.update(params_item)
-        flash[:notice] = "商品を更新しました"
-        redirect_to users_path
-      else
-        render 'edit'
-      end
+    if @item.update(params_item)
+      flash[:notice] = "商品を更新しました"
+      redirect_to users_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
       if @item.destroy
         flash[:notice] = "商品を削除しました"
         # redirect_to user_path #users#showができていればこちらに
