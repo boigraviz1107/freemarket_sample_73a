@@ -48,7 +48,6 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'faker'
   gem 'rails-controller-testing'
 end
 
@@ -95,3 +94,4 @@ gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
 
 gem 'fog-aws'
+gem 'faker'
