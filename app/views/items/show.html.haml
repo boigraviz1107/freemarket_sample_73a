@@ -1,4 +1,4 @@
-= render '/shared/breadCrumbs'
+= render '/shared/breadCrumbs/index'
 .showMain
   .showMain__content
     .showMain__content__itemBox
@@ -87,11 +87,11 @@
       コメントする
   .showMain__content__bacKOrNext
     - unless @item == Item.first
-      = link_to item_path((@item.id - 1)),class:"showMain__content__bacKOrNext__back" do
+      = link_to "#",class:"showMain__content__bacKOrNext__back" do
         %i.fa.fa-angle-left
         前の商品
     - unless @item == Item.last
-      = link_to item_path((@item.id.to_i + 1)),class:"showMain__content__bacKOrNext__next" do
+      = link_to "#",class:"showMain__content__bacKOrNext__next" do
         後ろの商品
         %i.fa.fa-angle-right
   .showMain__content__categoryLink

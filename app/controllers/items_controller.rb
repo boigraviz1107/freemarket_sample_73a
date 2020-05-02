@@ -11,7 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    session[:item].clear if @item = Item.new(session[:item])
+    if session[:item]
+      @brand_name = session[:item]["brand_id"].nil? ? "" : Brand.find(session[:item]["brand_id"]).name
+       session[:item].clear if @item = Item.new(session[:item])
+    else
+      @item = Item.new
+    end
     3.times { @item.images.build }
   end
 
@@ -30,7 +35,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    session[:item].clear if @item.attributes = session[:item]
+    if session[:item]
+      session[:item].clear if @item.attributes = session[:item]
+    end
     @brand_name = @item.brand ? @item.brand.name : ""
     @images = @item.images.includes(:item)
     case @images.count
@@ -64,6 +71,7 @@ class ItemsController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:id])
+    @category = @item.category
   end
 
   def redirect_not_item_user

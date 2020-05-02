@@ -1,0 +1,9 @@
+%li
+  %i.fa.fa-angle-right
+%li
+  = link_to "ブランド", brands_path
+- if now_show_page?
+  %li
+    %i.fa.fa-angle-right
+  %li
+    = link_to @brand.name, brand_path(@brand)

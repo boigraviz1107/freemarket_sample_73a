@@ -1,0 +1,40 @@
+%li
+  %i.fa.fa-angle-right
+%li
+  = link_to "カテゴリー", categories_path
+- if now_show_page?
+  - if @category.is_root?
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to @category.name, category_path(@category)
+  - elsif @category.has_parent? && @category.has_children?
+    - unless @category.parent.has_parent?
+      %li
+        %i.fa.fa-angle-right
+      %li
+        = link_to @category.parent.name, category_path(@category.parent)
+      %li
+        %i.fa.fa-angle-right
+      %li
+        = link_to @category.name, category_path(@category)
+    - else
+      %li
+        = link_to @category.parent.name, category_path(@category.parent)
+      %li
+        %i.fa.fa-angle-right
+      %li
+        = link_to @category.children.name, category_path(@category.children)
+  - else
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to @category.parent.parent.name, category_path(@category.parent.parent)
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to @category.parent.name, category_path(@category.parent)
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to @category.name, category_path(@category)

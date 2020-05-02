@@ -1,11 +1,5 @@
+= render '/shared/breadCrumbs/index'
 .itemIndex
-  .itemIndex__title
-    - if @category.is_root?
-      = "#{@category.name}"
-    - elsif @category.has_parent? && @category.has_children?
-      = "#{@category.parent.name} > #{@category.name}"
-    - else
-      = "#{@category.root.name} > #{@category.parent.name} > #{@category.name}"
   .itemIndex__subtitle
     = "#{@category.name}の商品一覧"
   .itemIndex__items

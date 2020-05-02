@@ -1,0 +1,10 @@
+.breadCrumbs
+  %ul
+    %li
+      = link_to "FURIMA", root_path
+    - if now_categories_page?
+      = render 'shared/breadCrumbs/category'
+    - if now_brands_page?
+      = render 'shared/breadCrumbs/brand'
+    - if now_users_page?
+      = render 'shared/breadCrumbs/user'
