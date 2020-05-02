@@ -40,7 +40,7 @@
           %th ブランド
           %td
             - unless @item.brand_id.nil?
-              = @item.brand.name
+              = link_to @item.brand.name, brand_path(@item.brand)
         %tr.showMain__content__itemBox__table__size
           %th 商品のサイズ
           %td

@@ -13,7 +13,6 @@ class CategoriesController < ApplicationController
       indirects = @category.indirects
       indirects.each do |indirect|
         indirect.items.each do |item|
-          # Item.where(category_id: indirect.id).order("created_at: DESC")
           @items.push(item)
         end
       end

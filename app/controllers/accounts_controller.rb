@@ -8,15 +8,12 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     if @account.save
       flash.now[:alert] = '保存出来ましたよー'
-      redirect_to root_path
-      # [root_path]をマイページのpathに書き換えてください
+      redirect_to users_path
     else
       flash.now[:alert] = '保存できてませんよー'
       render :new
     end
   end
-
-
 
   private
   def account_params

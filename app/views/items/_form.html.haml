@@ -1,11 +1,11 @@
 .productBody
   .productBody__main
-    - if flash[:error].present?
+    - if flash[:errors].present?
       %ul.errors
-        - flash[:error].each do |e|
+        - flash[:errors].each do |error|
           %p
             %i
-              = e
+              = error
     = form_with(model: @item, local: true,class: "productBody__main__form") do |f|
       .productBody__main__form__image
         .productBody__main__form__image__set
