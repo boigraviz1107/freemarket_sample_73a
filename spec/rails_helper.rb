@@ -72,3 +72,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def create_category
+  parent = create(:category, id: 1)
+  children = parent.children.create(name: "トップス")
+  children.children.create(name: "Tシャツ/カットソー(半袖/袖なし)")
+end
