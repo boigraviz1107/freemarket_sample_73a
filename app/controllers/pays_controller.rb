@@ -13,7 +13,14 @@ class PaysController < ApplicationController
   end
 
   def destroy
+    pay = Pay.find(params[:id])
+    pay.destroy
+    redirect_to pays_path
     # indexから削除可能にする
   end
+
+
+
+
 
 end
