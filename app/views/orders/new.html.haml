@@ -1,0 +1,4 @@
+= form_with(model: [@item,@order], local: true,class: "parchace__form") do |f|
+  = f.hidden_field :item_id, value: @item.id
+
+  = f.submit "購入する"

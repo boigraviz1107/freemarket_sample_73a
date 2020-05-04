@@ -19,8 +19,8 @@
         .showMain__content__itemBox__price__option
           (税込) 送料込み
       - if user_signed_in? && current_user.id != @item.user.id
-        = form_with(model: @order, local: true, class: "showMain__content__itemBox__form") do |f|
-          = f.submit "購入画面に進む", class: "showMain__content__itemBox__form__submit"
+        = link_to new_item_order_path(@item), class: "showMain__content__itemBox__form" do
+          %p.showMain__content__itemBox__form__submit 購入画面に進む
       .showMain__content__itemBox__ex
         = simple_format(@item.explannation)
       %table.showMain__content__itemBox__table
