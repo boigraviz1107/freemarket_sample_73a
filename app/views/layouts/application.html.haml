@@ -5,8 +5,10 @@
     %title FreemarketSample73a
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    %script{type: "text/javascript"} Payjp.setPublicKey('pk_test_96c8f07fa4a5305ea257a355');
   %body
     = render '/layouts/header'
     = yield
