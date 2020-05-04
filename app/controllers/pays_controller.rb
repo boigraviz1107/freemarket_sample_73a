@@ -31,6 +31,9 @@ before_action :setcard
   end
 
   def destroy
+    pay = Pay.find(params[:id])
+    pay.destroy
+    redirect_to pays_path
     # indexから削除可能にする
   end
 
@@ -38,5 +41,4 @@ before_action :setcard
   def setcard
     @card = Pay.where(user_id:current_user.id)
   end
-  
 end

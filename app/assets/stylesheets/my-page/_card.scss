@@ -19,20 +19,49 @@ main {
         width: 700px;
         height: 300px;
         background-color: white;
-        display: flex;
+        // display: flex;
         justify-content: center;
         align-items: center;
         margin: 10px;
         margin-top: -10px;
+        
+        
+
         a {
           color: white;
+        }
+        &__main {
+          padding: 50px 70px 20px 70px;
+          &__index {
+            font-weight: bold;
+            padding: 0 100px;
+          }
+          &__lists {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: solid 2px #eee;
+            padding: 0 100px 20px 100px;
+            
+
+          &__list {
+            padding-top: 20px;
+          }
+          &__delete a {
+            color:#d22f28;
+            border: 1px solid #d22f28;
+            border-radius: 4px;
+            padding: 5px;
+          }
+          }
         }
         &__text {
           height: 50px;
           width: 300px;
-          background-color: red;
+          background-color: #d22f28;
           line-height: 50px;
           text-align: center;
+          margin-top: 10px;
+          margin: 0 auto;
           &__sentence {
           }
         }
