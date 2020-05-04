@@ -75,8 +75,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false,foreign_key: true|
-|custmer_id|string|null: false|
-|card_id|string|null: false|
+|customer_id|text|null: false|
+|card_id|text|null: false|
 
 ### Association
 - belongs_to :user
@@ -114,7 +114,7 @@
 
 - shipper
   - buyer's burden:false
-  - seller bears  :true  
+  - seller bears  :true
 
 ### Association
 - belongs_to :user

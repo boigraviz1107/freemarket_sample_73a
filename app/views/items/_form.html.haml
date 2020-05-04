@@ -104,7 +104,7 @@
     = link_to "#" do
       %button{class: "productBody__main__form__draft", type: "submit"}下書きに保存
     -if params[:acion] = "edit"
-      = link_to item_path(@item),method: :delete, data: { confirm:"商品を削除してよろしいですか?" } do
+      = link_to "items/#{@item.id}",method: :delete, data: { confirm:"商品を削除してよろしいですか?" } do
         %button{class: "productBody__main__form__delete", type: "submit"}削除
     %br/
     .productBody__main__back
