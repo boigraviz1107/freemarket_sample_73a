@@ -59,8 +59,11 @@
       &__form {
         height: 60px;
         width: 100%;
+        display: block;
         &__submit {
           background-color: #ea352d;
+          text-align: center;
+          line-height: 60px;
           color: white;
           font-weight: 600;
           font-size: 24px;
