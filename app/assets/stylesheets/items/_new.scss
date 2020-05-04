@@ -140,8 +140,11 @@
             @include must($color:red);
           }
         }
-        #item_category_id {
+        select {
           @include form2;
+          &:nth-child(n+2){
+            margin-top: 20px;
+          }
         }
       }
       &__brand {
@@ -150,7 +153,7 @@
         &__box {
           display:flex;
           margin-bottom: 20px;
-          &__label {  
+          &__label {
           }
           &__mustGray {
             @include must($color:#ccc);
@@ -163,7 +166,7 @@
       &__status {
         padding: 40px;
         margin:0 auto;
-        border-bottom: 1px solid #EEEEEE; 
+        border-bottom: 1px solid #EEEEEE;
         &__box {
           display:flex;
           margin-bottom: 20px;

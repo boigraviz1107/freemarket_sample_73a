@@ -4,8 +4,26 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: %i(new update create edit destroy)
   before_action :redirect_not_exhibitor, only: %i(edit update destroy)
   before_action :done_buy, only: %i(edit update destroy)
+  before_action :set_category, only: %i(edit new)
 
   def show
+  end
+
+  def category
+    @children = Category.find(params[:id]).children
+    respond_to do |format|
+      format.json
+      format.html
+    end
+  end
+
+  def parent_category
+    @parent = Category.find(params[:id]).parent
+    @root_parent = @parent.parent
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   def new
@@ -90,6 +108,10 @@ class ItemsController < ApplicationController
 
   def done_buy
     redirect_to item_path(@item), flash: { notice: "購入済みです" } if @item.order
+  end
+
+  def set_category
+    @parents = Category.where(id: 1..4)
   end
 
 end
