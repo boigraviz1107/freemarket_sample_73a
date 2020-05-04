@@ -11,10 +11,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @item.images.build
-    @item.images.build
-    @item.images.build
+    if session[:item]
+      @brand_name = session[:item]["brand_id"].nil? ? "" : Brand.find(session[:item]["brand_id"]).name
+       session[:item].clear if @item = Item.new(session[:item])
+    else
+      @item = Item.new
+    end
+    3.times { @item.images.build }
   end
 
   def create
@@ -23,7 +26,8 @@ class ItemsController < ApplicationController
       flash[:notice] = "商品を登録しました"
       redirect_to @item
     else
-      redirect_to new_item_path, flash: { error: @item.errors.full_messages }
+      session[:item] = @item
+      redirect_to new_item_path, flash: { errors: @item.errors.full_messages }
     end
   end
 
@@ -31,15 +35,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if session[:item]
+      session[:item].clear if @item.attributes = session[:item]
+    end
     @brand_name = @item.brand ? @item.brand.name : ""
     @images = @item.images.includes(:item)
-    pht = @images.count
-    if pht === 1
-      2.times{ @item.images.build }
-    elsif pht === 2
-      1.times{ @item.images.build }
-    else
-      0.times{ @item.images.build }
+    case @images.count
+    when 1
+      2.times { @item.images.build }
+    when 2
+      1.times { @item.images.build }
     end
   end
 
@@ -48,15 +53,15 @@ class ItemsController < ApplicationController
       flash[:notice] = "商品を更新しました"
       redirect_to @item
     else
-      redirect_to edit_item_path(@item), flash: { error: @item.errors.full_messages }
+      session[:item] = @item
+      redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages }
     end
   end
 
   def destroy
       if @item.destroy
         flash[:notice] = "商品を削除しました"
-        # redirect_to user_path #users#showができていればこちらに
-        redirect_to root_path
+        redirect_to users_path
       else
         flash[:alert] = "エラーが発生しました"
         redirect_back(fallback_location: root_path)
@@ -66,6 +71,7 @@ class ItemsController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:id])
+    @category = @item.category
   end
 
   def redirect_not_item_user
@@ -80,15 +86,12 @@ class ItemsController < ApplicationController
   def check_brand_name(params)
     brand_name = params[:item][:brand_name]
     unless brand_name.blank?
-      unless brand = Brand.find_by(name: brand_name)
-        brand = Brand.create!(name: brand_name)
-      end
+      brand = Brand.create!(name: brand_name) unless brand = Brand.find_by(name: brand_name)
       params[:item][:brand_id] = brand.id
     else
       params[:item][:brand_id] = nil
     end
     return params
   end
-
 
 end

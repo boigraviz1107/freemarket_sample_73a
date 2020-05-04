@@ -1,3 +1,4 @@
+= render '/shared/breadCrumbs/index'
 .category
   .category__index
     .category__index__title
@@ -5,7 +6,6 @@
     - @categories.each do |category|
       .category__index__one
         = category.name
-
   .category__contents
     .category__contents__content
       - @categories.each do |parent|

@@ -1,8 +1,5 @@
+= render '/shared/breadCrumbs/index'
 .itemIndex
-  .itemIndex__title
-    = @brand.name
-  .itemIndex__subtitle
-    = "#{@brand.name}の商品一覧"
   .itemIndex__items
     - @items.each do |item|
       = link_to item_path(item) do

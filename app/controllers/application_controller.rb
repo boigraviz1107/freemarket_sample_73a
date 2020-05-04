@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   private
 
   def configure_permitted_parameters
@@ -16,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    users_path
+    new_account_path
   end
 
   def after_sign_out_path_for(resource)
@@ -26,5 +27,6 @@ class ApplicationController < ActionController::Base
   def production?
     Rails.env.production?
   end
+
 end
 

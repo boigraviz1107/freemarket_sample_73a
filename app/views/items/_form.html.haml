@@ -1,11 +1,11 @@
 .productBody
   .productBody__main
-    - if flash[:error].present?
+    - if flash[:errors].present?
       %ul.errors
-        - flash[:error].each do |e|
+        - flash[:errors].each do |error|
           %p
             %i
-              = e
+              = error
     = form_with(model: @item, local: true,class: "productBody__main__form") do |f|
       .productBody__main__form__image
         .productBody__main__form__image__set
@@ -17,7 +17,7 @@
         .productBody__main__form__image__box
           = f.fields_for :images,class: "productBody__main__form__image__box__form" do |i|
             .productBody__main__form__image__box__form__set
-              = i.label :image, "画像",class: "productBody__main__form__image__box__form__set__label" do 
+              = i.label :image, "画像",class: "productBody__main__form__image__box__form__set__label" do
                 %i.fas.fa-camera.fa-5x
                 = i.file_field :image,class: "productBody__main__form__image__box__form__set__field", style: "display: none"
       .productBody__main__form__nameArea
@@ -32,14 +32,12 @@
           .productBody__main__form__explanation__box__must 必須
         .productBody__main__form__explanation__field
           = f.text_area :explannation, placeholder:"商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-      %p 商品の詳細    
+      %p 商品の詳細
       .productBody__main__form__category
         .productBody__main__form__category__box
           = f.label :category_id, "カテゴリー",class: ".productBody__main__form__category__box__label"
           .productBody__main__form__category__box__must 必須
         .productBody__main__form__category__field
-          -# = f.collection_select :category_id, Category.all.order("id ASC").limit(4), :id, :name, include_blank: "選択して下さい"
-          -# = f.collection_select :category_id,  Category.find(1).children,:id, :name, include_blank: "選択して下さい"
           = f.collection_select :category_id,  Category.find(1).children[0].children,:id, :name, include_blank: "選択して下さい"
       .productBody__main__form__brand
         .productBody__main__form__brand__box
@@ -105,6 +103,9 @@
       = f.submit "出品する", class: "productBody__main__form__exhibition"
     = link_to "#" do
       %button{class: "productBody__main__form__draft", type: "submit"}下書きに保存
+    -if params[:acion] = "edit"
+      = link_to item_path(@item),method: :delete, data: { confirm:"商品を削除してよろしいですか?" } do
+        %button{class: "productBody__main__form__delete", type: "submit"}削除
     %br/
     .productBody__main__back
       = link_to "もどる", :back,class: "productBody__main__back__btn"

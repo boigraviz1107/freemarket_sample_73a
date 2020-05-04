@@ -1,0 +1,9 @@
+%li
+  %i.fa.fa-angle-right
+%li
+  = link_to "マイページ", users_path
+-if now_show_page?
+  %li
+    %i.fa.fa-angle-right
+  %li
+  = params[:action]
