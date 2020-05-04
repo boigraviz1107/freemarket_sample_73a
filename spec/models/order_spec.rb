@@ -26,5 +26,4 @@ RSpec.describe Order, type: :model do
     expect(another_order.errors[:item_id]).to include("has already been taken")
     end
 
-  
 end
