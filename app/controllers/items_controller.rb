@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
     if @item.update(params_item)
       redirect_to @item, flash: { notice: "商品を更新しました" }
     else
-      session[:item] = @item
+      session[:item]["category_id"] = Item.find(params[:id]).category_id
       redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages }
     end
   end

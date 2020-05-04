@@ -1,9 +1,13 @@
 window.addEventListener('load', function () {
   let selectArea = document.querySelector(".productBody__main__form__category__field");
   let parents = document.querySelector("#parentsArea");
-
+  // methods
   function addSelector(data,id = "") {
     let select = document.createElement("select");
+    let noOption = document.createElement("option");
+    noOption.setAttribute("value", "");
+    noOption.appendChild(document.createTextNode("選択してください"));
+    select.appendChild(noOption);
     data.forEach(el => {
       let option = document.createElement("option");
       option.setAttribute("value", el.id);
@@ -47,7 +51,7 @@ window.addEventListener('load', function () {
           addSelector(dataTwo, "__children");
         })
         .fail((dataTwo) => {
-          window.alert("error")
+          window.alert("選択してください")
         })
       }
     })
