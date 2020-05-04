@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item
   before_action :authenticate_user!
   before_action :redirect_exhibitor
+  before_action :redirect_done_buy
 
   def new
     @order = Order.new
@@ -13,7 +14,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to root_path, flash: { notice: "購入が完了しました" }
     else
-      redirect_to new_item_order_path, flash: { errors: @order.errors.full_messages }
+      redirect_to new_item_order_path
     end
   end
 
@@ -29,5 +30,9 @@ class OrdersController < ApplicationController
 
   def redirect_exhibitor
     redirect_to users_path if @item.user == current_user
+  end
+
+  def redirect_done_buy
+    redirect_to root_path if @item.order
   end
 end

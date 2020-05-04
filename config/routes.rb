@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'tops#index'
   resources :accounts, only: %i(new create)
-  resources :items do
+  resources :items, except: %i(index) do
     resources :orders, only: %i(new create)
   end
   resources :categories, only: %i(show index)

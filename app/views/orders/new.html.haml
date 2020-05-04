@@ -44,4 +44,4 @@
         .wrapper__main__payInfo__inner__form
           = form_with(model: [@item, @order], local: true,class: "wrapper__main__payInfo__inner__form__area") do |f|
             = f.hidden_field :item_id, value: @item.id
-            = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit"
+            = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit",data: { confirm:"購入してよろしいですか?" }
