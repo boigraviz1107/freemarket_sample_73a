@@ -5,6 +5,7 @@ RSpec.describe ItemsController, type: :request do
   let(:params) { attributes_for(:item) }
   describe 'GET#new' do
     before do
+      create_category
       sign_in user
       get new_item_path
     end
@@ -27,11 +28,6 @@ RSpec.describe ItemsController, type: :request do
         post items_path, params: { item: params }
         expect(response.status).to eq 302
       end
-      # it 'itemが増えている' do
-        # expect do
-        #   post items_path, params: { item: params }
-        # end. to change{ Item.count }.by(0)
-      # end
     end
   end
 end
