@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'users/logout', to: 'users#logout'
   post 'item/category', to: 'items#category'
   post 'item/parent_category', to: 'items#parent_category'
+  post 'category/parents', to: 'categories#parents'
+  post 'category/children', to: 'categories#children'
 end

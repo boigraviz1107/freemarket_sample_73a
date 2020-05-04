@@ -30,5 +30,20 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def parents
+    @parents = Category.where(id: 1..4)
+    respond_to do |format|
+      format.json
+      format.html
+    end
+  end
+
+  def children
+    @children = Category.find(params[:id]).children
+    respond_to do |format|
+      format.json
+      format.html
+    end
+  end
 
 end
