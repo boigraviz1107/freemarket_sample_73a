@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   require 'payjp'
 
-  before_action :set_item
-  before_action :authenticate_user!
-  before_action :redirect_exhibitor
-  before_action :redirect_done_buy
+  before_action :set_item, except: %i(cardRegist cardCreate)
+  before_action :authenticate_user!, except: %i(cardRegist cardCreate)
+  before_action :redirect_exhibitor, except: %i(cardRegist cardCreate)
+  before_action :redirect_done_buy, except: %i(cardRegist cardCreate)
 
   def new
     @order = Order.new
@@ -28,6 +28,15 @@ class OrdersController < ApplicationController
     else
       redirect_to new_item_order_path
     end
+  end
+
+  def cardRegist
+    # カード情報の入力フォーム
+  end
+
+  def cardCreate
+    # カード情報の登録
+    redirect_to new_item_order_path(@order)
   end
 
   private
