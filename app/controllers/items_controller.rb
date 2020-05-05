@@ -9,23 +9,6 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def category
-    @children = Category.find(params[:id]).children
-    respond_to do |format|
-      format.json
-      format.html
-    end
-  end
-
-  def parent_category
-    @parent = Category.find(params[:id]).parent
-    @root_parent = @parent.parent
-    respond_to do |format|
-      format.json
-      format.html
-    end
-  end
-
   def new
     if session[:item]
       @brand_name = session[:item]["brand_id"].nil? ? "" : Brand.find(session[:item]["brand_id"]).name
