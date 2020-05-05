@@ -1,0 +1,58 @@
+.wrapper
+  .wrapper__titleImage
+    = link_to root_path,class: "wrapper__titleImage__link" do
+      = image_tag '/images/logo/logo.png', size: "185x49"
+  .wrapper__main
+    .wrapper__main__confirm
+      購入内容の確認
+    %div.line
+    .wrapper__main__itemInfo
+      .wrapper__main__itemInfo__image
+        = image_tag @item.images[0].image.url , size: "80x80"
+      .wrapper__main__itemInfo__infoText
+        %p.wrapper__main__itemInfo__infoText--name= @item.name
+        %p.wrapper__main__itemInfo__infoText--price
+          ¥
+          =@item.price.to_s(:delimited)
+          (税込)送料込み
+    %div.line
+    .wrapper__main__payInfo
+      .wrapper__main__payInfo__inner
+        .wrapper__main__payInfo__inner__priceArea
+          .wrapper__main__payInfo__inner__priceArea__price
+            .wrapper__main__payInfo__inner__priceArea__price__info
+              支払い金額
+            .wrapper__main__payInfo__inner__priceArea__price__text
+              ¥
+              =@item.price.to_s(:delimited)
+          .wrapper__main__payInfo__inner__priceArea__point
+            ■ポイントを使用(所持ポイント: 0P)
+        .wrapper__main__payInfo__inner__payMethods
+          %p.wrapper__main__payInfo__inner__payMethods__info
+            支払い方法
+          %p.wrapper__main__payInfo__inner__payMethods__select
+            = link_to order_cardRegist_path do
+              %i.fas.fa-plus-circle
+              登録してください
+          .wrapper__main__payInfo__inner__payMethods__cards
+            - @cards.each do |card|
+              .wrapper__main__payInfo__inner__payMethods__cards__card
+                .wrapper__main__payInfo__inner__payMethods__cards__card__brand
+                  = card.brand
+                .wrapper__main__payInfo__inner__payMethods__cards__card__last4
+                  = "**** **** **** #{card.last4}"
+                .wrapper__main__payInfo__inner__payMethods__cards__card__exp
+                  = "#{card.exp_month} / #{card.exp_year}"
+                = hidden_field_tag :cardid, card.id
+        .wrapper__main__payInfo__inner__sendArea
+          %p.wrapper__main__payInfo__inner__sendArea__info
+            配送先
+          %p.wrapper__main__payInfo__inner__sendArea__text
+            = link_to "#" do
+              %i.fas.fa-plus-circle
+              登録してください
+        .wrapper__main__payInfo__inner__form
+          = form_with(model: [@item, @order], local: true,class: "wrapper__main__payInfo__inner__form__area") do |f|
+            = f.hidden_field :item_id, value: @item.id
+            = f.hidden_field :card_id
+            = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit",data: { confirm:"購入してよろしいですか?" }

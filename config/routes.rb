@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'tops#index'
   resources :accounts, only: %i(new create)
-  resources :items do
+  resources :items, except: %i(index) do
     resources :orders, only: %i(new create)
   end
   resources :categories, only: %i(show index)
@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   resources :pays, only: %i(index new create destroy)
   get 'users/card', to: 'users#card'
   get 'users/logout', to: 'users#logout'
+  post 'category/root_parent', to: 'categories#root_parent_category'
+  post 'category/parents', to: 'categories#parents'
+  post 'category/children', to: 'categories#children'
+  get 'order/cardRegist', to: 'orders#cardRegist'
+  post 'order/cardCreate', to: 'orders#cardCreate'
 end

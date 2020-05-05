@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: %i(show edit update destroy)
   before_action :authenticate_user!, only: %i(new update create edit destroy)
-  before_action :redirect_not_item_user, only: %i(edit update destroy)
-
-  def index
-    @items = Item.all.order(created_at: "DESC")
-  end
+  before_action :redirect_not_exhibitor, only: %i(edit update destroy)
+  before_action :done_buy, only: %i(edit update destroy)
+  before_action :set_category, only: %i(edit new)
 
   def show
   end
@@ -31,9 +30,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     if session[:item]
       session[:item].clear if @item.attributes = session[:item]
@@ -50,18 +46,16 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(params_item)
-      flash[:notice] = "商品を更新しました"
-      redirect_to @item
+      redirect_to @item, flash: { notice: "商品を更新しました" }
     else
-      session[:item] = @item
+      session[:item]["category_id"] = Item.find(params[:id]).category_id
       redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages }
     end
   end
 
   def destroy
       if @item.destroy
-        flash[:notice] = "商品を削除しました"
-        redirect_to users_path
+        redirect_to users_path, flash: { notice: "商品を削除しました" }
       else
         flash[:alert] = "エラーが発生しました"
         redirect_back(fallback_location: root_path)
@@ -69,13 +63,14 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def set_item
     @item = Item.find(params[:id])
     @category = @item.category
   end
 
-  def redirect_not_item_user
-    redirect_to root_path unless @item.user_id == current_user.id
+  def redirect_not_exhibitor
+    redirect_to root_path unless @item.user == current_user
   end
 
   def params_item
@@ -92,6 +87,14 @@ class ItemsController < ApplicationController
       params[:item][:brand_id] = nil
     end
     return params
+  end
+
+  def done_buy
+    redirect_to item_path(@item), flash: { notice: "購入済みです" } if @item.order
+  end
+
+  def set_category
+    @parents = Category.where(id: 1..4)
   end
 
 end

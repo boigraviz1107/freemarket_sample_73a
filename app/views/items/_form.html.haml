@@ -38,7 +38,7 @@
           = f.label :category_id, "カテゴリー",class: ".productBody__main__form__category__box__label"
           .productBody__main__form__category__box__must 必須
         .productBody__main__form__category__field
-          = f.collection_select :category_id,  Category.find(1).children[0].children,:id, :name, include_blank: "選択して下さい"
+          = f.select :category, options_for_select(@parents.map{|c|[c[:name], c[:id]]}), {include_blank: '選択して下さい'}, {id: 'parentsArea'}
       .productBody__main__form__brand
         .productBody__main__form__brand__box
           = f.label :brand_name, "ブランド名",class: ".productBody__main__form__brand__box__label"

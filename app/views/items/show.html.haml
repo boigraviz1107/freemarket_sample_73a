@@ -6,6 +6,10 @@
         = @item.name
       .showMain__content__itemBox__imageArea
         .showMain__content__itemBox__imageArea__firstImage
+          - if @item.order
+            .showMain__content__itemBox__imageArea__firstImage__soldArea
+            .showMain__content__itemBox__imageArea__firstImage__soldText
+              SOLD
           = image_tag @item.images[0].image.url , size: "300x250"
         - if @item.images.count >= 2
           %ul.showMain__content__itemBox__imageArea__otherImages
@@ -19,8 +23,11 @@
         .showMain__content__itemBox__price__option
           (税込) 送料込み
       - if user_signed_in? && current_user.id != @item.user.id
-        = form_with(model: @order, local: true, class: "showMain__content__itemBox__form") do |f|
-          = f.submit "購入画面に進む", class: "showMain__content__itemBox__form__submit"
+        - unless @item.order
+          = link_to new_item_order_path(@item), class: "showMain__content__itemBox__form" do
+            %p.showMain__content__itemBox__form__submit 購入画面に進む
+        - else
+          %p.showMain__content__itemBox__soldout 売り切れました
       .showMain__content__itemBox__ex
         = simple_format(@item.explannation)
       %table.showMain__content__itemBox__table
@@ -72,19 +79,27 @@
           %i.fa.fa-flag
           不適切な商品の通報
       - if user_signed_in? && current_user.id == @item.user.id
-        .showMain__content__itemBox__sellerItem
-          = link_to "編集する" , edit_item_path(@item),class:"showMain__content__itemBox__sellerItem__edit btn"
-          = link_to "削除する" , item_path(@item),method: :delete, class: "showMain__content__itemBox__sellerItem__delete btn", data: { confirm:"商品を削除してよろしいですか?" }
+        - unless @item.order
+          .showMain__content__itemBox__sellerItem
+            = link_to "編集する" , edit_item_path(@item),class:"showMain__content__itemBox__sellerItem__edit btn"
+            = link_to "削除する" , item_path(@item),method: :delete, class: "showMain__content__itemBox__sellerItem__delete btn", data: { confirm:"商品を削除してよろしいですか?" }
   = form_with(model: @comment, local: true, class: "showMain__content__commentArea") do |f|
-    = f.text_area :text, class: "showMain__content__commentArea__textArea"
+    - unless @item.order
+      = f.text_area :text, class: "showMain__content__commentArea__textArea"
+    - else
+      = f.text_area :text, class: "showMain__content__commentArea__textArea noselect", disabled: "disabled"
     %p.showMain__content__commentArea__message
       相手のことを考え丁寧なコメントを心がけましょう。
       %br/
       不快な言葉遣いなどは利用制限や退会処分となることがあります。
     %br/
-    = f.button class:"showMain__content__commentArea__submit" do
-      %i.fa.fa-comment
-      コメントする
+    -unless @item.order
+      = f.button class:"showMain__content__commentArea__submit" do
+        %i.fa.fa-comment
+        コメントする
+    -else
+      %p.showMain__content__commentArea__soldout
+        売り切れのためコメントできません
   .showMain__content__bacKOrNext
     - unless @item == Item.first
       = link_to "#",class:"showMain__content__bacKOrNext__back" do

@@ -28,6 +28,29 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          position: relative;
+          &__soldArea {
+            z-index: 1;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 120px 120px 0 0;
+            border-color: rgb(234, 53, 45) transparent transparent transparent;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+          &__soldText {
+            font-size: 28px;
+            color: rgb(255, 255, 255);
+            transform: rotate(-45deg);
+            letter-spacing: 2px;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 24px;
+            z-index: 2;
+          }
           img {
             height: 100%;
             width: auto;
@@ -59,8 +82,11 @@
       &__form {
         height: 60px;
         width: 100%;
+        display: block;
         &__submit {
           background-color: #ea352d;
+          text-align: center;
+          line-height: 60px;
           color: white;
           font-weight: 600;
           font-size: 24px;
@@ -69,6 +95,18 @@
           border: 0;
           cursor: pointer;
         }
+      }
+      &__soldout {
+        background-color: #888;
+        text-align: center;
+        line-height: 60px;
+        color: white;
+        font-weight: 600;
+        font-size: 24px;
+        height: 100%;
+        width: 100%;
+        border: 0;
+        cursor: not-allowed;
       }
       &__ex {
         line-height: 1.5;
@@ -189,6 +227,14 @@
         font-size: 18px;
         border-radius: 100px;
         cursor: pointer;
+      }
+      &__soldout {
+        background-color: #888;
+        cursor: not-allowed;
+        line-height: 48px;
+        color: #fff;
+        width: 100%;
+        font-size: 18px;
       }
     }
     &__bacKOrNext {

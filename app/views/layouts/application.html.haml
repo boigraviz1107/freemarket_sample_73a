@@ -11,6 +11,9 @@
     %script{type: "text/javascript"} Payjp.setPublicKey('pk_test_96c8f07fa4a5305ea257a355');
   %body
     = render '/layouts/header'
+    - flash.each do |key, value|
+      - unless key == "errors"
+        = content_tag(:div, value, class: key)
     = yield
     = render '/layouts/appDL'
     = render '/layouts/itemsell'
