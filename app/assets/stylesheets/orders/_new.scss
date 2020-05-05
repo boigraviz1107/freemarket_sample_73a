@@ -90,6 +90,31 @@
               }
             }
           }
+          &__cards {
+            margin-top: 20px;
+            &__card {
+              padding: 10px;
+              border: 4px double gray;
+              margin-bottom: 5px;
+              &__brand {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+              }
+              &__last4 {
+                margin-bottom: 5px;
+              }
+              &__exp {
+                font-size: 13px;
+              }
+              &:hover {
+                opacity: 0.6;
+              }
+              &:active {
+                border: 3px solid red;
+              }
+            }
+          }
         }
         &__sendArea {
           padding: 32px 0;
@@ -127,4 +152,7 @@
 .line {
   width: 100%;
   border-bottom: 1px solid rgb(245, 245, 245);
+}
+.red {
+  border: 4px solid red;
 }
