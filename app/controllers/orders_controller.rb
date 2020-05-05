@@ -8,14 +8,21 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @cards = []
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    customer = Pay.where( user_id: current_user )
+    customer.each do |cus|
+      card = Payjp::Customer.retrieve("#{cus.customer_id}").cards.data[0]
+      @cards << card
+    end
   end
 
   def create
     @order = Order.new(params_order)
-    item = @order.item_id
-    card = Pay.find_by(user_id: cirrent_user_id, card_id: params[:card_id])
+    item = Item.find(@order.item_id)
+    card = Pay.find_by(params_card_id)
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    Payjp::charge.create(amount: item[:price], customer: card.custmor_id, currency: 'JPY')
+    Payjp::Charge.create(amount: item.price, customer: card.customer_id, currency: 'JPY')
     if @order.save
       redirect_to root_path, flash: { notice: "購入が完了しました" }
     else
@@ -27,6 +34,10 @@ class OrdersController < ApplicationController
 
   def params_order
     params.require(:order).permit(:item_id).merge(user_id: current_user.id)
+  end
+
+  def params_card_id
+    params.require(:order).permit(:card_id).merge(user_id: current_user.id)
   end
 
   def set_item
