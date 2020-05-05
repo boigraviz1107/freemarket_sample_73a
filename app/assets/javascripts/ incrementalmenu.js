@@ -93,6 +93,12 @@ window.addEventListener('load', function () {
                               categoriesGroundChildrenArea.appendChild(list);
                             });
                             cc.appendChild(categoriesGroundChildrenArea);
+                            let groundChild = document.querySelectorAll(".aGroundChild");
+                            groundChild.forEach(function (gc) {
+                              gc.addEventListener('mouseover', (e) => {
+                                e.stopPropagation();
+                              });
+                            });
                           });
                       },200);
                     });

@@ -29,7 +29,7 @@ window.addEventListener('load', function () {
       selectArea.removeChild(selectArea.lastChild);
     }
     $.ajax({
-      url: '/category/parents',
+      url: '/category/children',
       type: 'POST',
       data: { 'id': parents.value },
       dataType: 'json',
@@ -42,7 +42,7 @@ window.addEventListener('load', function () {
           selectArea.removeChild(selectArea.lastChild);
         }
         $.ajax({
-          url: '/category/parents',
+          url: '/category/children',
           type: 'POST',
           data: { 'id': children.value },
           dataType: 'json',
