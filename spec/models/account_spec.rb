@@ -16,7 +16,6 @@ RSpec.describe Account, type: :model do
         expect(account.errors[:prefecture_id]).to include("can't be blank")
      end
 
-
       it " post_numが8文字以上であれば登録できないこと" do
         account = build(:account, post_num: "12345678")
         account.valid?
@@ -49,36 +48,6 @@ RSpec.describe Account, type: :model do
         puts account.errors.full_messages
         expect(account.errors[:city_num]).to include("can't be blank")
       end
-
-      # ----任意電話番号は任意のため、バリデーションをなくしたためコメントアウト----
-      # it 'phone_numが11桁の数字の場合通過' do
-      #   account = build(:account, phone_num: "12345678901")
-      #   account.valid?
-      #   expect(account).to be_valid
-      # end
-
-
-      # it 'phone_numが10桁の数字の場合通過' do
-      #   account = build(:account, phone_num: "1234567890")
-      #   account.valid?
-      #   expect(account).to be_valid
-      # end
-
-
-      # it " phone_numが12文字以上であれば登録できないこと" do
-      #   account = build(:account, phone_num: "090123456789")
-      #   # puts account.valid?
-      #   # puts account.errors.full_messages
-      #   expect(account.errors[:phone_num]).to include("is invalid")
-      # end
-
-
-      # it " post_numが10文字以下であれば登録できないこと" do
-      #   account = build(:account, phone_num: "090123456")
-      #   puts account.valid?
-      #   puts account.errors.full_messages
-      #   expect(account.errors[:phone_num]).to include("is invalid")
-      # end
     end
   end
 end

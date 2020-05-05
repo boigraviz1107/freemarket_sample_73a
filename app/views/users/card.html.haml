@@ -7,6 +7,21 @@
         %p.card__top__title
           支払い方法
       .card__under
+        =link_to new_pay_path do
+
+        .card__under__main
+          .card__under__main__index
+            クレジットカード一覧
+          .card__under__main__lists
+            .card__under__main__lists__list
+              .card__under__main__lists__list__icon
+                VISA
+              .card__under__main__lists__list__num
+                ***************1234
+              .card__under__main__lists__list__days
+                20/9
+            .card__under__main__lists__delete
+              = link_to "削除する"
         =link_to "#" do
           .card__under__text
             %p.card__under__text__sentence

@@ -4,6 +4,8 @@ main {
     display: flex;
     padding: 40px 200px;
     .card {
+      height: 100vh;
+      padding-bottom: 50px;
       &__top {
         width: 700px;
         height: 50px;
@@ -16,29 +18,63 @@ main {
         font-size: 21px;
       }
       &__under {
-        width: 700px;
-        height: 300px;
+        width: 700px; 
         background-color: white;
-        display: flex;
         justify-content: center;
         align-items: center;
         margin: 10px;
         margin-top: -10px;
+        padding-bottom: 50px;
         a {
           color: white;
         }
+        &__main {
+          padding: 50px 100px 0px 100px;
+          &__index {
+            font-weight: bold;
+            padding: 0 100px;
+          }
+          &__lists {
+          &__list {
+          &__days{
+            margin-bottom: 20px;
+          }
+          }
+          &__delete  {
+            &__delete{
+              color:#d22f28;
+              border: 1px solid #d22f28;
+              border-radius: 4px;
+              padding: 5px;
+              float: right;
+            }
+          }       
+        }
+        }
+        &__form{
+          border-bottom: solid 1px #eee;
+          padding: 20px 0 ;
         &__text {
           height: 50px;
           width: 300px;
-          background-color: red;
+          background-color: #d22f28;
           line-height: 50px;
           text-align: center;
-          &__sentence {
-          }
+          margin-top: 10px;
+          margin: 0 auto;         
         }
-        .fas.fa-credit-card {
+        .card__under__text__sentence{
+          border: solid 1px red;
+         text-align: center;
+         background-color: red;
+         line-height: 48px;
+         max-width: 320px;
+         margin: 0 auto;        
+        }
+       .fas.fa-credit-card {
           margin-right: 20px;
         }
+      }
       }
     }
   }
