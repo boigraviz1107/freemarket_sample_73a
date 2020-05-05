@@ -95,3 +95,4 @@ gem 'recaptcha', require: "recaptcha/rails"
 
 gem 'fog-aws'
 gem 'faker'
+gem 'dotenv-rails'

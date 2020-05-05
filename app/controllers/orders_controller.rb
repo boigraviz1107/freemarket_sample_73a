@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  require 'payjp'
 
   before_action :set_item
   before_action :authenticate_user!
@@ -11,6 +12,10 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(params_order)
+    item = @order.item_id
+    card = Pay.find_by(user_id: cirrent_user_id, card_id: params[:card_id])
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::charge.create(amount: item[:price], customer: card.custmor_id, currency: 'JPY')
     if @order.save
       redirect_to root_path, flash: { notice: "購入が完了しました" }
     else
