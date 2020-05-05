@@ -107,48 +107,19 @@
         =link_to "#" do
           新規投稿商品
     .pickupBlock__images
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://4.bp.blogspot.com/-aJiG_1apmXs/VaMNwx5R4TI/AAAAAAAAvdQ/SGlzST9_E-o/s800/oldwoman_94.png")/
-          .pickupBlock__images__image__list__name
-            人造人間8号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                34円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎268
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://4.bp.blogspot.com/-J4jLETIeuYk/VaMNvITY0xI/AAAAAAAAvdA/SxOJzu1B7d0/s800/oldwoman_91.png")/
-          .pickupBlock__images__image__list__name
-            人造人間5号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                12000円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎112
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://1.bp.blogspot.com/-7mMsnlcpI4c/VaMNunZjWpI/AAAAAAAAvck/_X_SNROQP_k/s800/oldwoman_89.png")/
-          .pickupBlock__images__image__list__name
-            人造人間2号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                200円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎2
+      .itemIndex__items
+        - @items.each do |item|
+          = link_to item_path(item) do
+            .itemIndex__items__item
+              .itemIndex__items__item__imageGroup
+                .itemIndex__items__item__imageGroup__image
+                  = image_tag item.images[0].image.url, size: "188x188"
+                .itemIndex__items__item__imageGroup__price
+                  .itemIndex__items__item__imageGroup__price__value
+                    ¥
+                    = item.price.to_s(:delimited)
+              .itemIndex__items__item__name
+                = item.name
 
   .pickupBlock
     .pickupBlock__boxtitle
@@ -158,46 +129,17 @@
         =link_to "#" do
           アーカイバー
     .pickupBlock__images
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://4.bp.blogspot.com/-39SnY6czv-g/VaMOH6tlptI/AAAAAAAAviY/Zhta2pOuE5Y/s800/boy_07.png")/
-          .pickupBlock__images__image__list__name
-            人造人間56号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                5672000円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎45654
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://3.bp.blogspot.com/-LdYIP4bw72s/Vf-asftO6tI/AAAAAAAAyJU/_10QGXQyP4Q/s800/icon_business_man15.png")/
-          .pickupBlock__images__image__list__name
-            人造人間35号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                156400円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎13453
-      =link_to "#", class: "pickupBlock__images__image" do
-        .pickupBlock__images__image__list
-          .pickupBlock__images__image__list__figure
-            %img(src="https://4.bp.blogspot.com/-k7qQRYy2yJg/Vf-atj1jJCI/AAAAAAAAyJs/rFD5lyAn7NI/s800/icon_business_woman02.png")/
-          .pickupBlock__images__image__list__name
-            人造人間25号
-          .pickupBlock__images__image__list__content
-            .pickupBlock__images__image__list__content__price
-              %p.pickupBlock__images__image__list__content__price__top
-                5433200円
-              %p.pickupBlock__images__image__list__content__price__bottom
-                (税込み)
-            .pickupBlock__images__image__list__content__favorite
-              ⭐︎23464
+      .itemIndex__items
+        - @items.each do |item|
+          = link_to item_path(item) do
+            .itemIndex__items__item
+              .itemIndex__items__item__imageGroup
+                .itemIndex__items__item__imageGroup__image
+                  = image_tag item.images[0].image.url, size: "188x188"
+                .itemIndex__items__item__imageGroup__price
+                  .itemIndex__items__item__imageGroup__price__value
+                    ¥
+                    = item.price.to_s(:delimited)
+              .itemIndex__items__item__name
+                = item.name
 
