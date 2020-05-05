@@ -1,0 +1,29 @@
+= render '/shared/breadCrumbs/index'
+%main
+  .both
+    = render "users/sideBar"
+    .card
+      .card__top
+        %p.card__top__title
+          支払い方法
+      .card__under
+        .card__under__main
+          .card__under__main__index
+            クレジットカード一覧
+          .card__under__main__lists
+            .card__under__main__lists__list
+              - @cards.each do |card|
+                .card__under__main__lists__list__icon
+                  = card.brand
+                .card__under__main__lists__delete
+                  = button_to "削除する", pay_path(1) , {method: :delete, class: :card__under__main__lists__delete__delete, params: {card_id: card.id, } } 
+                .card__under__main__lists__list__num
+                  = "**** **** **** #{card.last4}"
+                .card__under__main__lists__list__days
+                  = "#{card.exp_month} / #{card.exp_year}"
+        .card__under__form
+          =link_to new_pay_path do
+            .card__under__text
+              %p.card__under__text__sentence
+                %i.fas.fa-credit-card
+                クレジットカードを追加する
