@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
   if (location.pathname.includes("edit")) {
     let categoryId = document.querySelector("#hidden_category_id").value;
     $.ajax({
-      url: '/item/parent_category',
+      url: '/category/root_parent',
       type: 'POST',
       data: { 'id': categoryId },
       dataType: 'json',
@@ -32,7 +32,7 @@ window.addEventListener('load', function () {
     .done((data) => {
       parents.value = data.rootId
       $.ajax({
-        url: '/item/category',
+        url: '/category/parents',
         type: 'POST',
         data: { 'id': data.rootId },
         dataType: 'json',
@@ -41,7 +41,7 @@ window.addEventListener('load', function () {
           addSelector(dataTwo);
           document.querySelector("#item_category_child").value = data.parentId
           $.ajax({
-            url: '/item/category',
+            url: '/category/parents',
             type: 'POST',
             data: { 'id': data.parentId },
             dataType: 'json',
@@ -57,7 +57,7 @@ window.addEventListener('load', function () {
                 selectArea.removeChild(selectArea.lastChild);
               }
               $.ajax({
-                url: '/item/category',
+                url: '/category/parents',
                 type: 'POST',
                 data: { 'id': parents.value },
                 dataType: 'json',
@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
                     selectArea.removeChild(selectArea.lastChild);
                   }
                   $.ajax({
-                    url: '/item/category',
+                    url: '/category/parents',
                     type: 'POST',
                     data: { 'id': children.value },
                     dataType: 'json',
@@ -87,7 +87,7 @@ window.addEventListener('load', function () {
                 selectArea.removeChild(selectArea.lastChild);
               }
               $.ajax({
-                url: '/item/category',
+                url: '/category/parents',
                 type: 'POST',
                 data: { 'id': children.value },
                 dataType: 'json',

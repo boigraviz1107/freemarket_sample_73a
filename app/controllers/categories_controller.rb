@@ -30,6 +30,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def root_parent_category
+    @parent = Category.find(params[:id]).parent
+    @root_parent = @parent.parent
+    respond_to do |format|
+      format.json
+      format.html
+    end
+  end
+
   def parents
     @parents = Category.where(id: 1..4)
     respond_to do |format|
