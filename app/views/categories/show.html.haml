@@ -7,11 +7,11 @@
       = link_to item_path(item) do
         .itemIndex__items__item
           .itemIndex__items__item__imageGroup
+            - if item.order
+              .itemIndex__items__item__imageGroup__soldArea
+              .itemIndex__items__item__imageGroup__soldText
+                SOLD
             .itemIndex__items__item__imageGroup__image
-              - if item.order
-                .itemIndex__items__item__imageGroup__image__soldArea
-                .itemIndex__items__item__imageGroup__image__soldText
-                  SOLD
               = image_tag item.images[0].image.url, size: "188x188"
             .itemIndex__items__item__imageGroup__price
               .itemIndex__items__item__imageGroup__price__value

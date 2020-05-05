@@ -51,12 +51,10 @@ window.addEventListener('load', function () {
           addSelector(dataTwo, "__children");
         })
         .fail((dataTwo) => {
-          window.alert("選択してください")
         })
       }
     })
     .fail((data) => {
-      window.alert("error")
     });
   }
   // 価格の自動変化
