@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   post 'item/parent_category', to: 'items#parent_category'
   post 'category/parents', to: 'categories#parents'
   post 'category/children', to: 'categories#children'
+  get 'order/cardRegist', to: 'orders#cardRegist'
+  post 'order/cardCreate', to: 'orders#cardCreate'
 end
