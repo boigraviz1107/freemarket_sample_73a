@@ -2,7 +2,12 @@ class PaysController < ApplicationController
 require 'payjp'
 before_action :setcard
   def index
-    # マイページからアクセス
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    @pays = Pay.where(user_id: current_user.id)
+    @cards = []
+    @pays.each do |card|
+      @cards << Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+    end
   end
 
   def new
@@ -31,10 +36,12 @@ before_action :setcard
   end
 
   def destroy
-    pay = Pay.find(params[:id])
-    pay.destroy
+    @pays = Pay.find_by(user_id: current_user.id , card_id: params[:card_id])
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    @cards = Payjp::Customer.retrieve(@pays.customer_id)
+    @cards.delete
+    @pays.delete
     redirect_to pays_path
-    # indexから削除可能にする
   end
 
   private
