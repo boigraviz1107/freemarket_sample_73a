@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :items, except: %i(index) do
     resources :orders, only: %i(new create) do
       collection do
-        get :card_new
+        get :card_new, :orderOk
         post :card_create
       end
     end
