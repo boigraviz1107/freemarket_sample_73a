@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root 'tops#index'
   resources :accounts, only: %i(new create)
   resources :items, except: %i(index) do
-    resources :orders, only: %i(new create)
+    resources :orders, only: %i(new create) do
+      collection do
+        get :orderOk
+      end
+    end
   end
   resources :categories, only: %i(show index)
   resources :brands, only: %i(index show)
@@ -17,4 +21,5 @@ Rails.application.routes.draw do
   post 'category/children', to: 'categories#children'
   get 'order/cardRegist', to: 'orders#cardRegist'
   post 'order/cardCreate', to: 'orders#cardCreate'
+  # get 'order/orderOk', to: 'orders#orderOk'
 end
