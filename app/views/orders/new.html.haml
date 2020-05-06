@@ -31,7 +31,7 @@
           %p.wrapper__main__payInfo__inner__payMethods__info
             支払い方法
           %p.wrapper__main__payInfo__inner__payMethods__select
-            = link_to order_cardRegist_path do
+            =link_to card_new_item_orders_path(id: @item.id) do
               %i.fas.fa-plus-circle
               登録してください
           .wrapper__main__payInfo__inner__payMethods__cards

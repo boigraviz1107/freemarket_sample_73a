@@ -5,21 +5,23 @@ Rails.application.routes.draw do
   resources :items, except: %i(index) do
     resources :orders, only: %i(new create) do
       collection do
-        get :orderOk
+        get :card_new, :orderOk
+        post :card_create
       end
     end
   end
   resources :categories, only: %i(show index)
   resources :brands, only: %i(index show)
-  resources :categories, only: %i(index show)
-  resources :users, only: %i(index)
-  resources :pays, only: %i(index new create destroy)
-  get 'users/card', to: 'users#card'
-  get 'users/logout', to: 'users#logout'
-  post 'category/root_parent', to: 'categories#root_parent_category'
-  post 'category/parents', to: 'categories#parents'
-  post 'category/children', to: 'categories#children'
-  get 'order/cardRegist', to: 'orders#cardRegist'
-  post 'order/cardCreate', to: 'orders#cardCreate'
-  # get 'order/orderOk', to: 'orders#orderOk'
+  resources :categories, only: %i(index show) do
+    collection do
+      post :root_parent_category, :parents, :children
+    end
+  end
+  resources :users, only: %i(index) do
+    collection do
+      get :card, :logout
+    end
+  end
+  resources :pays, only: %i(index new create)
+  resource :pays, only: %i(destroy)
 end
