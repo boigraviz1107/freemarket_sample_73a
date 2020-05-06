@@ -11,16 +11,17 @@
           .card__under__main__index
             クレジットカード一覧
           .card__under__main__lists
-            .card__under__main__lists__list
-              - @cards.each do |card|
-                .card__under__main__lists__list__icon
-                  = card.brand
-                .card__under__main__lists__delete
-                  = button_to "削除する", new_pay_path, {method: :delete, class: :card__under__main__lists__delete__delete, params: {card_id: card.id, } } 
-                .card__under__main__lists__list__num
-                  = "**** **** **** #{card.last4}"
-                .card__under__main__lists__list__days
-                  = "#{card.exp_month} / #{card.exp_year}"
+            - @cards.each do |card|
+              .card__under__main__lists__list
+                .card__under__main__lists__list__left
+                  .card__under__main__lists__list__left__icon
+                    = card.brand
+                  .card__under__main__lists__list__left__num
+                    = "**** **** **** #{card.last4}"
+                  .card__under__main__lists__list__left__days
+                    = "#{card.exp_month} / #{card.exp_year}"
+                .card__under__main__lists__list__delete
+                  = button_to "削除する", pays_path, {method: :delete, class: :card__under__main__lists__delete__delete, params: {card_id: card.id, } } 
         .card__under__form
           =link_to new_pay_path do
             .card__under__text
