@@ -1,6 +1,7 @@
 window.addEventListener('load', function () {
   let selectArea = document.querySelector(".productBody__main__form__category__field");
   let parents = document.querySelector("#parentsArea");
+
   // methods
   function addSelector(data, id = "") {
     let select = document.createElement("select");
@@ -24,7 +25,7 @@ window.addEventListener('load', function () {
   if (location.pathname.includes("edit")) {
     let categoryId = document.querySelector("#hidden_category_id").value;
     $.ajax({
-      url: '/category/root_parent',
+      url: '/categories/root_parent_category',
       type: 'POST',
       data: { 'id': categoryId },
       dataType: 'json',
@@ -32,7 +33,7 @@ window.addEventListener('load', function () {
     .done((data) => {
       parents.value = data.rootId
       $.ajax({
-        url: '/category/children',
+        url: '/categories/children',
         type: 'POST',
         data: { 'id': data.rootId },
         dataType: 'json',
@@ -41,7 +42,7 @@ window.addEventListener('load', function () {
           addSelector(dataTwo);
           document.querySelector("#item_category_child").value = data.parentId
           $.ajax({
-            url: '/category/children',
+            url: '/categories/children',
             type: 'POST',
             data: { 'id': data.parentId },
             dataType: 'json',
@@ -57,7 +58,7 @@ window.addEventListener('load', function () {
                 selectArea.removeChild(selectArea.lastChild);
               }
               $.ajax({
-                url: '/category/children',
+                url: '/categories/children',
                 type: 'POST',
                 data: { 'id': parents.value },
                 dataType: 'json',
@@ -70,7 +71,7 @@ window.addEventListener('load', function () {
                     selectArea.removeChild(selectArea.lastChild);
                   }
                   $.ajax({
-                    url: '/category/children',
+                    url: '/categories/children',
                     type: 'POST',
                     data: { 'id': children.value },
                     dataType: 'json',
@@ -87,7 +88,7 @@ window.addEventListener('load', function () {
                 selectArea.removeChild(selectArea.lastChild);
               }
               $.ajax({
-                url: '/category/children',
+                url: '/categories/children',
                 type: 'POST',
                 data: { 'id': children.value },
                 dataType: 'json',
@@ -97,16 +98,7 @@ window.addEventListener('load', function () {
               })
             }
           })
-            .fail((dataThree) => {
-              window.alert("error")
-          })
         })
-        .fail((dataTwo) => {
-          window.alert("error")
-        })
-    })
-    .fail((data) => {
-      window.alert("error")
     })
   }
   const submit = document.querySelector(".productBody__main__form__exhibition");
