@@ -5,8 +5,14 @@ ja:
       account:
       brand:
       category:
-      image:
+        one: カテゴリー
+        other: カテゴリー
       item:
+        one: 'item'
+        other: 'items'
+      image:
+        one: 画像
+        other: 画像
       pay:
     attributes:
       user:
@@ -29,18 +35,21 @@ ja:
         name: ブランド名
       category:
         name: カテゴリー
-      image:
-        image: 画像
-      item: 
+      item:
+        category: カテゴリー
+        category_id: カテゴリー
         name: アイテム名
         explannation: アイテムの説明
         status: アイテムの情報
         shipper: 送料負担者
-        shipper_area: 配送地
+        shipping_area: 配送地
         lead_time: 配送までの日数
         price: 値段
         size: サイズ
         shipping_method: 配送方法
+        images: 画像
+      image:
+        image: 画像
       pay:
         customer_id: カスタマーID
         card_id: カードID
