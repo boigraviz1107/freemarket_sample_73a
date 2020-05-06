@@ -51,6 +51,11 @@ baby_meals = baby.children.create(:name=>"授乳/食事")
 baby_houses = baby.children.create(:name=>"ベビー家具/寝具/室内用品")
 baby_toys = baby.children.create(:name=>"おもちゃ")
 baby_events = baby.children.create(:name=>"行事/記念品")
+others_children =['ペット用品','食品','飲料/酒,''日用品/生活雑貨/旅行','アンティーク/コレクション','文房具/事務用品,事務/店舗用品','その他']
+others_children.each do |child|
+  other.children.create(name: child)
+end
+
 
 # 孫要素
 
@@ -98,6 +103,22 @@ baby_houses.children.create([{:name=>"ベッド"}, {:name=>"布団/毛布"},{:na
 baby_toys.children.create([{:name=>"おふろのおもちゃ"}, {:name=>"がらがら"},{:name=>"オルゴール"},{:name=>"ベビージム"},{:name=>"手押し車/カタカタ"},{:name=>"知育玩具"},{:name=>"その他"}])
 baby_events.children.create([{:name=>"お宮参り用品"}, {:name=>"お食い初め用品"},{:name=>"アルバム"},{:name=>"手形/足形"},{:name=>"その他"}])
 
+others_grandchildren = [
+  ['ペットフード','犬用品','猫用品','魚用品/水草','小動物用品','爬虫類/両生類用品','かご/おり','鳥用品','虫類用品','その他'],
+  ['菓子','米','野菜','果物','調味料','魚介類(加工食品)','肉類(加工食品)','その他','加工食品','その他'],
+  ['コーヒー','ソフトドリンク','ミネラルウォーター','茶','ウイスキー','ワイン','ブランデー','焼酎','日本酒','ビール、発泡酒','その他'],
+  ['タオル/バス用品','日用品/生活雑貨','洗剤/柔軟剤','旅行用品','防災関連グッズ','その他'],
+  ['雑貨','工芸品','家具','印刷物','その他'],
+  ['筆記具','ノート/メモ帳','テープ/マスキングテープ','カレンダー/スケジュール','アルバム/スクラップ','ファイル/バインダー','はさみ/カッター','カードホルダー/名刺管理','のり/ホッチキス','その他'],
+  ['オフィス用品一般','オフィス家具','店舗用品','OA機器','ラッピング/包装','その他'],
+  ['その他']
+]
+children = Category.find(4).children
+children.each_with_index do |child, i|
+  others_grandchildren[i].each do |grandchild|
+    child.children.create(name: grandchild)
+  end
+end
 
 require 'faker'
 Faker::Config.locale = 'ja'
@@ -111,7 +132,7 @@ shipping_method = [
   'クロネコヤマト',
   'ゆうパック',
   'クリックポスト',
-  'ゆうパケット'
+  'ゆうパケット',
 ]
 
 # 乱数取得
@@ -123,12 +144,12 @@ end
 # 適当に切り捨て
 def math_floor(price)
   price = price.to_s.split("")
-  return (price[0] + price[1] + (price[2..(price.count-1)].map{|i|i=0}.join)).to_i
+  ((price[0..(price.count-3)].join) + "0" + "0").to_i
 end
 
 # Brand
-20.times do
-  Brand.create(name: Faker::Space.galaxy)
+5.times do
+  Brand.create!(name: Faker::Restaurant.name )
 end
 
 # User
@@ -147,10 +168,10 @@ for i in 1..4
 end
 
 # Item
-for i in 1..15
+40.times do
   item = Item.new(
     user_id: rand_math(1,(User.count)),
-    category_id: 300,
+    category_id: rand_math(47,(Category.count)),
     brand_id: rand_math(1,(Brand.count)),
     name: Faker::Company.suffix + Faker::Games::Pokemon.name,
     explannation: Faker::Lorem.question(word_count: 20),

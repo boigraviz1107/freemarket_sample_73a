@@ -21,8 +21,8 @@ module ApplicationHelper
   end
 
   def now_show_page?
-    item_page = %w(index)
-    item_page.any? { |t| params[:action].exclude?(t) }
+    item_page = %w(show)
+    item_page.any? { |t| params[:action].include?(t) }
   end
 
   def now_new_page?

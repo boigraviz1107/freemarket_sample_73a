@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   resources :accounts, only: %i(new create)
   resources :items, except: %i(index) do
     resources :orders, only: %i(new create) do
-      collection do
-        get :cardRegist
-        post :cardCreate
-      end
+      get :cardRegist, on: :collection
+      post :cardCreate, on: :collection
     end
   end
   resources :categories, only: %i(show index) do
@@ -24,4 +22,5 @@ Rails.application.routes.draw do
   end
   resources :pays, only: %i(index new create destroy)
   resource :pays, only: %i(destroy)
+  get :'category/:category_id/brand/:id', to: 'brands#root_category_brand_item'
 end

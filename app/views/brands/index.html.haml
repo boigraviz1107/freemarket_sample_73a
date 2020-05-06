@@ -4,12 +4,16 @@
     .bategory__index__title
       ブランド一覧
     - @brands.each do |brand|
-      .bategory__index__one
-        = brand.name
-
-  .bategory__contents
-    .bategory__contents__content
-      .bategory__contents__content__list
-        - @brands.each do |brand|
-          = link_to brand_path(brand.id), class: :bategory__contents__content__list__name do
-            = brand.name
+      = link_to brand_path(brand) do
+        .bategory__index__one
+          = brand.name
+  - @category_brands.each_with_index do |brands,i|
+    .bategory__title
+      %h3
+        = @root_categories[i].name
+    .bategory__contents
+      .bategory__contents__content
+        .bategory__contents__content__list
+          - brands.each do |brand|
+            = link_to "/category/#{i+1}/brand/#{brand.id}", class: :bategory__contents__content__list__name do
+              = brand.name
