@@ -2,8 +2,18 @@
   %i.fa.fa-angle-right
 %li
   = link_to "マイページ", users_path
--if now_show_page?
+- if now_pays_page?
   %li
     %i.fa.fa-angle-right
   %li
-  = params[:action]
+    = link_to "支払い方法", pays_path
+  - if now_new_page?
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "カードの登録", new_pay_path
+- if params[:action] == "logout"
+  %li
+    %i.fa.fa-angle-right
+  %li
+    = link_to "ログアウト", logout_users_path

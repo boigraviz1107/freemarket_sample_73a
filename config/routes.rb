@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :categories, only: %i(show index)
   resources :brands, only: %i(index show)
   resources :categories, only: %i(index show) do
     collection do
