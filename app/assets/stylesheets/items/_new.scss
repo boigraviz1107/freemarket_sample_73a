@@ -52,6 +52,8 @@
           }
         }
         &__box {
+          display: flex;
+          justify-content: space-around;
           align-items: center;
           border-width: 1px;
           border-style: dashed;
@@ -64,9 +66,7 @@
           text-align: center;
           font-size: 5px;
           margin-top: 20px;
-          .productBody__main__form__image__box__form__set:nth-child(n+2){
-              display: none;
-            }
+          
           &__form {
             &__set {
               display: flex;
