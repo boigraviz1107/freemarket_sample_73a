@@ -31,7 +31,7 @@
           %p.wrapper__main__payInfo__inner__payMethods__info
             支払い方法
           %p.wrapper__main__payInfo__inner__payMethods__select
-            = link_to cardRegist_item_orders_path do
+            =link_to card_new_item_orders_path(id: @item.id) do
               %i.fas.fa-plus-circle
               登録してください
           .wrapper__main__payInfo__inner__payMethods__cards
@@ -55,4 +55,4 @@
           = form_with(model: [@item, @order], local: true,class: "wrapper__main__payInfo__inner__form__area") do |f|
             = f.hidden_field :item_id, value: @item.id
             = f.hidden_field :card_id
-            = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit",data: { confirm:"購入してよろしいですか?" }
+            = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit", disabled: true , data: { confirm:"購入してよろしいですか?" }

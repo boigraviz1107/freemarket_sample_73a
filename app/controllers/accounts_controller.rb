@@ -7,10 +7,10 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      flash.now[:alert] = '保存出来ましたよー'
+      # flash.now[:alert] = '保存出来ましたよー'
       redirect_to users_path
     else
-      flash.now[:alert] = '保存できてませんよー'
+      # flash.now[:alert] = '保存できてませんよー'
       render :new
     end
   end

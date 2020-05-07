@@ -3,6 +3,7 @@
     %h2 発送元・お届け先住所変更
   .address__form
     = form_with(model: @account, local: true) do |f|
+      = render 'layouts/error_messages', model: f.object
       .field
         .field__title
           = f.label :郵便番号, class: :field__title__label

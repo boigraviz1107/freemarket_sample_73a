@@ -35,6 +35,14 @@
     margin: 0 auto;
     width: 55%;
     height: 100%;
+    .errors {
+      padding: 10px;
+      background-color: #FFFFDD;
+      p {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
     &__form {
       p {
         color: rgb(136, 136, 136);

@@ -1,9 +1,9 @@
 .usermain{
   text-align: center;
   background-color: #f5f5f5;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  padding: 100px 50px 1250px 50px;
+  padding: 100px 50px 125px 50px;
   &__title{
     font-family: 'Font Awesome 5 Free', 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     font-size: 22px;
@@ -15,7 +15,7 @@
     padding: 32px;
     text-align: center;
     width: 700px;
-    margin:  0 auto;    
+    margin:  0 auto;
   }
   &__form{
     background-color: #FFFFFF;
@@ -33,18 +33,18 @@
     font-size: 12px;
     }
   &__title{
-    display: flex;        
+    display: flex;
     &__label{
       font-weight: 600;
     }
-    .must{        
-          background-color: red;         
+    .must{
+          background-color: red;
           margin: 0 0 5px 8px;
           padding: 2px 4px;
           border-radius: 2px;
           color: #fff;
           font-size: 12px;
-          vertical-align: top;        
+          vertical-align: top;
         }
   }
   &__text{
@@ -130,6 +130,29 @@
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+}
+
+#error_explanation {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #FFFFDD;
+  h2 {
+    font-weight: bold;
+  }
+  ul {
+    li {
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+  }
+}
+// application.html.hamlに記載
+.deviseInfo {
+  margin: 10px;
+  padding: 10px;
+  background-color: #FFFFDD;
 }
 
 
