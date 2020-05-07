@@ -1,0 +1,23 @@
+.itemIndex
+  .itemIndex__items
+    - @items.each do |item|
+      = link_to item_path(item) do
+        .itemIndex__items__item
+          .itemIndex__items__item__imageGroup
+            - if item.order
+              .itemIndex__items__item__imageGroup__soldArea
+              .itemIndex__items__item__imageGroup__soldText
+                SOLD
+            .itemIndex__items__item__imageGroup__image
+              = image_tag item.images.first.image.url, size: "188x188"
+            .itemIndex__items__item__imageGroup__price
+              .itemIndex__items__item__imageGroup__price__value
+                ¥
+                = item.price.to_s(:delimited)
+          .itemIndex__items__item__name
+            = item.name
+            -# 出品順を確認するためにおいてます。
+            -# %br/
+            -# = item.created_at.strftime("%Y年%m月%d日 %H:%M")
+  .pagienate
+    = paginate @items

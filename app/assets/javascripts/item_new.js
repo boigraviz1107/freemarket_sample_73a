@@ -1,6 +1,7 @@
 window.addEventListener('load', function () {
-  let selectArea = document.querySelector(".productBody__main__form__category__field");
-  let parents = document.querySelector("#parentsArea");
+  const selectArea = document.querySelector(".productBody__main__form__category__field");
+  const parents = document.querySelector("#parentsArea");
+
   // methods
   function addSelector(data,id = "") {
     let select = document.createElement("select");
@@ -29,7 +30,7 @@ window.addEventListener('load', function () {
       selectArea.removeChild(selectArea.lastChild);
     }
     $.ajax({
-      url: '/category/children',
+      url: '/categories/children',
       type: 'POST',
       data: { 'id': parents.value },
       dataType: 'json',
@@ -42,7 +43,7 @@ window.addEventListener('load', function () {
           selectArea.removeChild(selectArea.lastChild);
         }
         $.ajax({
-          url: '/category/children',
+          url: '/categories/children',
           type: 'POST',
           data: { 'id': children.value },
           dataType: 'json',
@@ -50,19 +51,15 @@ window.addEventListener('load', function () {
         .done((dataTwo) => {
           addSelector(dataTwo, "__children");
         })
-        .fail((dataTwo) => {
-        })
       }
     })
-    .fail((data) => {
-    });
   }
+
   // 価格の自動変化
   // variable
   let priceArea = document.querySelector("#item_price");
   let feeArea = document.querySelector(".productBody__main__form__fee__box2");
   let profitArea = document.querySelector(".productBody__main__form__profit__box2");
-
   // method
   function changePrice() {
     let value = priceArea.value;
@@ -75,10 +72,8 @@ window.addEventListener('load', function () {
       profitArea.textContent = (value - fee).toLocaleString();
     }
   }
-
   // exec
   changePrice();
   priceArea.onchange = () => changePrice();
   priceArea.addEventListener('keyup', () => changePrice());
-
 });

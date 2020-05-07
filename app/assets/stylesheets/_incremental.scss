@@ -12,6 +12,7 @@
     display: block;
     padding: 3px 8px 3px 10px;
     border-bottom: 1px solid #f8f8f8;
+    cursor: pointer;
   }
   .ParentFixArea {
     position: relative;
@@ -24,6 +25,7 @@
       top: 0;
       left: 210px;
       z-index: 3;
+      min-height: 545px;
       .aChildFixArea {
         position: relative;
       }
@@ -38,7 +40,7 @@
           background-color: white;
           position: absolute;
           top: 0;
-          left: 200px;
+          left: 230px;
           min-height: 545px;
           .aGroundChild {
             line-height: 32px;

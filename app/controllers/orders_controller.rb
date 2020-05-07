@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   require 'payjp'
 
-  before_action :set_item, except: %i(cardRegist cardCreate)
-  before_action :authenticate_user!, except: %i(cardRegist cardCreate)
-  before_action :redirect_exhibitor, except: %i(cardRegist cardCreate)
-  before_action :redirect_done_buy, except: %i(cardRegist cardCreate)
+  before_action :set_item, except: %i(cardRegist cardCreate orderOk)
+  before_action :authenticate_user!, except: %i(cardRegist cardCreate orderOk)
+  before_action :redirect_exhibitor, except: %i(cardRegist cardCreate orderOk)
+  before_action :redirect_done_buy, except: %i(cardRegist cardCreate orderOk)
 
   def new
     @order = Order.new
@@ -20,23 +20,49 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(params_order)
     item = Item.find(@order.item_id)
-    card = Pay.find_by(params_card_id)
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    Payjp::Charge.create(amount: item.price, customer: card.customer_id, currency: 'JPY')
-    if @order.save
-      redirect_to root_path, flash: { notice: "購入が完了しました" }
+    if Pay.find_by(params_card_id)
+      card = Pay.find_by(params_card_id)
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(amount: item.price, customer: card.customer_id, currency: 'JPY')
+      if @order.save
+        redirect_to orderOk_item_orders_path
+      else
+        redirect_to new_item_order_path
+      end
     else
-      redirect_to new_item_order_path
+      rredirect_to new_item_order_path(item.id)
+    end
+
+  end
+
+  def card_new
+    @item = Item.find(params[:item_id])
+  end
+
+  def card_create
+     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    if params['payjp-token'].blank?
+      render new
+    else
+      customer = Payjp::Customer.create(
+        email: current_user.email,
+        card: params['payjp-token'],
+      )
+      @card = Pay.create(
+        user_id: current_user.id, 
+        customer_id: customer.id, 
+        card_id: customer.cards.data[0].id
+      )
+      if @card.save
+        redirect_to new_item_order_path(params[:item])
+      else
+        redirect_to new_item_order_path(params[:item])
+      end
     end
   end
 
-  def cardRegist
-    # カード情報の入力フォーム
-  end
-
-  def cardCreate
-    # カード情報の登録
-    redirect_to new_item_order_path(@order)
+  def orderOk
+    # 購入完了お知らせページ
   end
 
   private

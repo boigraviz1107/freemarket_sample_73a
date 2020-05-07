@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   before_action :set_category, only: %i(edit new)
 
   def show
+    @previous = Item.where("id < ?", @item.id).order("id DESC").first
+    @next = Item.where("id > ?", @item.id).order("id ASC").first
   end
 
   def new

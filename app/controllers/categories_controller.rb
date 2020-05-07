@@ -31,28 +31,18 @@ class CategoriesController < ApplicationController
   end
 
   def root_parent_category
-    @parent = Category.find(params[:id]).parent
-    @root_parent = @parent.parent
-    respond_to do |format|
-      format.json
-      format.html
-    end
+    @root_parent = Category.find(params[:id]).root
+    respond_to(&:json)
   end
 
   def parents
-    @parents = Category.where(id: 1..4)
-    respond_to do |format|
-      format.json
-      format.html
-    end
+    @parents = Category.where(ancestry: nil)
+    respond_to(&:json)
   end
 
   def children
     @children = Category.find(params[:id]).children
-    respond_to do |format|
-      format.json
-      format.html
-    end
+    respond_to(&:json)
   end
 
 end
