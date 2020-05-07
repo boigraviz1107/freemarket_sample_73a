@@ -5,7 +5,7 @@
         - flash[:errors].each do |error|
           %p
             %i
-              = error
+              = "* #{error}"
     = form_with(model: @item, local: true,class: "productBody__main__form") do |f|
       .productBody__main__form__image
         .productBody__main__form__image__set

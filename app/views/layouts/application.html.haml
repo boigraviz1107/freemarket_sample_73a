@@ -12,8 +12,9 @@
   %body
     = render '/layouts/header'
     - flash.each do |key, value|
-      - unless key == "errors"
-        = content_tag(:div, value, class: key)
+      .deviseInfo
+        - unless key == "errors"
+          = content_tag(:div, value, class: key)
     = yield
     = render '/layouts/appDL'
     = render '/layouts/itemsell'

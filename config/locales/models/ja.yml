@@ -1,0 +1,55 @@
+ja:
+  activerecord:
+    models:
+      user:
+      account:
+      brand:
+      category:
+        one: カテゴリー
+        other: カテゴリー
+      item:
+        one: 'item'
+        other: 'items'
+      image:
+        one: 画像
+        other: 画像
+      pay:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: Eメール
+        encrypted_password: パスワード
+        birth_date: 誕生日
+        first_name: 苗字
+        last_name: 名前
+        first_name_hira: 苗字(カナ)
+        last_name_hira: 名前(カナ)
+      account:
+        post_num: 郵便番号
+        prefecture_id: 県
+        city: 市町村
+        city_num: 番地
+        building: 建物名
+        phone_num: 電話番号
+      brand:
+        name: ブランド名
+      category:
+        name: カテゴリー
+      item:
+        category: カテゴリー
+        category_id: カテゴリー
+        name: アイテム名
+        explannation: アイテムの説明
+        status: アイテムの情報
+        shipper: 送料負担者
+        shipping_area: 配送地
+        lead_time: 配送までの日数
+        price: 値段
+        size: サイズ
+        shipping_method: 配送方法
+        images: 画像
+      image:
+        image: 画像
+      pay:
+        customer_id: カスタマーID
+        card_id: カードID
