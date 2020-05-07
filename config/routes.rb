@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   root 'tops#index'
   resources :accounts, only: %i(new create)
   resources :items, except: %i(index) do
-    resources :orders, only: %i(new create)
+  resources :orders, only: %i(new create)
   end
   resources :categories, only: %i(show index)
   resources :brands, only: %i(index show)
   resources :categories, only: %i(index show)
   resources :users, only: %i(index)
   resources :pays, only: %i(index new create destroy)
+  get 'signup/step1', to: 'signup#step1'
+  post 'signup/save_step1_to_session', to: 'signup#save_step1_to_session'
+  get 'signup/step2', to: 'signup#step2'
+  post 'signup/complete_signup', to: 'signup#complete_signup'
   get 'users/card', to: 'users#card'
   get 'users/logout', to: 'users#logout'
   post 'category/root_parent', to: 'categories#root_parent_category'

@@ -10,7 +10,7 @@
 |post_num|string|null:false|
 |prefecture|string|null: false|
 |city|string|null:false|
-|cuty_num|string|null :false|
+|city_num|string|null :false|
 |building|string|
 |phone_num|string|
 
