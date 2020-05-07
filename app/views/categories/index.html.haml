@@ -4,8 +4,9 @@
     .category__index__title
       カテゴリー一覧
     - @categories.each do |category|
-      .category__index__one
-        = category.name
+      = link_to category_path(category) do
+        .category__index__one
+          = category.name
   .category__contents
     .category__contents__content
       - @categories.each do |parent|

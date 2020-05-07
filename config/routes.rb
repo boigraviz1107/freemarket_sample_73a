@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   end
   resources :pays, only: %i(index new create)
   resource :pays, only: %i(destroy)
+  get :'category/:category_id/brand/:id', to: 'brands#root_category_brand_item'
 end

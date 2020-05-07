@@ -7,3 +7,8 @@
     %i.fa.fa-angle-right
   %li
     = link_to @brand.name, brand_path(@brand)
+- elsif params[:action] == "root_category_brand_item"
+  %li
+    %i.fa.fa-angle-right
+  %li
+    = link_to "#{@category.name}/#{@brand.name}", "/category/#{@category.id}/brand/#{@brand.id}"

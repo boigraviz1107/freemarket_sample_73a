@@ -101,11 +101,11 @@
         売り切れのためコメントできません
   .showMain__content__bacKOrNext
     - unless @item == Item.first
-      = link_to "#",class:"showMain__content__bacKOrNext__back" do
+      = link_to item_path(@previous),class:"showMain__content__bacKOrNext__back" do
         %i.fa.fa-angle-left
         前の商品
     - unless @item == Item.last
-      = link_to "#",class:"showMain__content__bacKOrNext__next" do
+      = link_to item_path(@next),class:"showMain__content__bacKOrNext__next" do
         後ろの商品
         %i.fa.fa-angle-right
   .showMain__content__categoryLink
