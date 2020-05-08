@@ -49,7 +49,7 @@
           align-items: center;
           &__must {
             @include must($color:red);
-           
+
           }
         }
         &__box {
@@ -67,7 +67,7 @@
           text-align: center;
           font-size: 5px;
           margin-top: 20px;
-          
+
           &__form {
             &__set {
               display: flex;
@@ -82,12 +82,11 @@
               &__label {
                 cursor: pointer;
                 }
-                
-            
+
+
               &__field {
                 width: 100px;
                 height: 100px;
-                display: none;
               }
             }
           }
@@ -99,7 +98,7 @@
         &__box {
           display:flex;
           margin-bottom: 20px;
-          &__label { 
+          &__label {
             font-weight: bold 2px;
           }
           &__must {
@@ -113,11 +112,11 @@
       &__explanation  {
         padding: 40px;
         margin:0 auto;
-        border-bottom: 1px solid #EEEEEE; 
+        border-bottom: 1px solid #EEEEEE;
         &__box {
           display:flex;
           margin-bottom: 20px;
-          &__label { 
+          &__label {
           }
           &__must {
             @include must($color:red);
@@ -251,7 +250,7 @@
       &__days {
         padding: 40px;
         margin:0 auto;
-        border-bottom: 1px solid #EEEEEE; 
+        border-bottom: 1px solid #EEEEEE;
         &__box {
           display:flex;
           margin-bottom: 20px;
@@ -385,7 +384,7 @@
     }
   }
 }
-#preview,#preview1,#preview2 {
+#preview0,#preview1,#preview2 {
   width: 100px;
   height: 95px;
 }
