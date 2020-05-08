@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   def new
     if session[:item]
       @brand_name = session[:item]["brand_id"].nil? ? "" : Brand.find(session[:item]["brand_id"]).name
-       session[:item].clear if @item = Item.new(session[:item])
+      session[:item].clear if @item = Item.new(session[:item])
     else
       @item = Item.new
     end
@@ -33,11 +33,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @images = @item.images.includes(:item)
     if session[:item]
       session[:item].clear if @item.attributes = session[:item]
     end
     @brand_name = @item.brand ? @item.brand.name : ""
-    @images = @item.images.includes(:item)
     case @images.count
     when 1
       2.times { @item.images.build }
