@@ -49,6 +49,7 @@
           align-items: center;
           &__must {
             @include must($color:red);
+           
           }
         }
         &__box {
