@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
 
   def root_parent_category
     @root_parent = Category.find(params[:id]).root
-    @parent = Category.find(params[:id]).parent 
+    @parent = Category.find(params[:id]).parent
     respond_to(&:json)
   end
 
