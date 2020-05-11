@@ -130,6 +130,10 @@
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+  &:hover {
+    text-decoration: underline;
+    opacity: .7;
+  }
 }
 
 #error_explanation {
