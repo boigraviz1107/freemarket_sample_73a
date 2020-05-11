@@ -77,6 +77,9 @@
             width: 90%;
             justify-content: space-evenly;
             display: flex;
+            img {
+              border: solid 1px;
+            }
           }
         }
         &__boxes {
@@ -91,19 +94,38 @@
               justify-content: center;
               align-items: center;
               height: 100%;
+              display: block;
               &__must {
                 @include must($color:red);
                 display: inline-block;
                 margin-right: 10px;
               }
               &__label {
-                cursor: pointer;
                 }
               &__field {
                 width: 100px;
                 height: 100px;
               }
             }
+          }
+        }
+        &__del {
+          margin: 0 auto;
+          width: 99%;
+          display: flex;
+          justify-content: space-evenly;
+          margin-top: 10px;
+          .item_image_delete0 {
+            display: block;
+            cursor: pointer;
+          }
+          .item_image_delete1 {
+            display: block;
+            cursor: pointer;
+          }
+          .item_image_delete2 {
+            display: block;
+            cursor: pointer;
           }
         }
       }

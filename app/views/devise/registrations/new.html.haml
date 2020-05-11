@@ -8,12 +8,12 @@
         .field__title
           = f.label :ニックネーム, class: :field__title__label
           .must 必須
-        = f.text_field :nickname, placeholder: '例) メルカリ太郎', class: :field__text
+        = f.text_field :nickname, autofocus: true, placeholder: '例) メルカリ太郎', class: :field__text0
       .field
         .field__title
           = f.label :メールアドレス, class: :field__title__label
           .must 必須
-        = f.email_field :email, placeholder: 'PC・携帯どちらでも可', autofocus: true, autocomplete: "email", class: :field__text
+        = f.email_field :email, placeholder: 'PC・携帯どちらでも可', autocomplete: "email", class: :field__text
       .field
         .field__title
           = f.label :パスワード, class: :field__title__label
