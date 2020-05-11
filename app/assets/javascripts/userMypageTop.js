@@ -4,13 +4,9 @@ window.addEventListener("load", function () {
 
   function tabSwitch() {
     document.getElementsByClassName("is_active")[0].classList.remove("is_active");
-
     this.classList.add("is_active");
-
     document.getElementsByClassName("is_showing")[0].classList.remove("is_showing");
-
     const index = tabsAry.indexOf(this);
-
     document.getElementsByClassName("content__notifi__sub")[index].classList.add("is_showing");
   }
 

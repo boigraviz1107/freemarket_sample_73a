@@ -2,7 +2,7 @@
   .usermain__title
     %h2 会員入力情報
   .usermain__form
-    = form_for @user, url: signup_save_step1_to_session_path do |f|
+    = form_for @user, url: save_step1_to_session_signup_index_path do |f|
       -# = render "devise/shared/error_messages", resource: resource
       .field
         .field__title

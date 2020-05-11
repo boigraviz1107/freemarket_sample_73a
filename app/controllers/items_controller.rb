@@ -77,7 +77,20 @@ class ItemsController < ApplicationController
 
   def params_item
     check_brand_name(params)
-    params.require(:item).permit(:category_id, :brand_id, :name, :explannation, :status, :shipper, :shipping_area, :lead_time, :price, :size, :shipping_method, images_attributes:[ :id, :image, :_destroy ]).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :category_id,
+      :brand_id,
+      :name,
+      :explannation,
+      :status,
+      :shipper,
+      :shipping_area,
+      :lead_time,
+      :price,
+      :size,
+      :shipping_method,
+      images_attributes:[ :id, :image, :_destroy ]
+    ).merge(user_id: current_user.id)
   end
 
   def check_brand_name(params)
@@ -88,7 +101,7 @@ class ItemsController < ApplicationController
     else
       params[:item][:brand_id] = nil
     end
-    return params
+    params
   end
 
   def done_buy

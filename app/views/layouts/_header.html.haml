@@ -18,12 +18,12 @@
       .headerInner__nav__rightItems
         - if user_signed_in?
           .headerInner__nav__rightItems__logout
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", destroy_user_session_path, method: :delete,data: {confirm: "ログアウトしてよろしいですか?"}
           .headerInner__nav__rightItems__mypage
             = link_to "マイページ", users_path
         - else
           .headerInner__nav__rightItems__login
             = link_to "ログイン", new_user_session_path
           .headerInner__nav__rightItems__signup
-            = link_to "新規会員登録", signup_step1_path
+            = link_to "新規会員登録", step1_signup_index_path
 

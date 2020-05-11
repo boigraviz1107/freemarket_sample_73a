@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :brands, only: %i(index show)
-  get 'signup/step1', to: 'signup#step1'
-  post 'signup/save_step1_to_session', to: 'signup#save_step1_to_session'
-  get 'signup/step2', to: 'signup#step2'
-  post 'signup/complete_signup', to: 'signup#complete_signup'
   resources :categories, only: %i(index show) do
     collection do
       post :root_parent_category, :parents, :children
@@ -27,5 +23,16 @@ Rails.application.routes.draw do
   end
   resources :pays, only: %i(index new create)
   resource :pays, only: %i(destroy)
+  resources :signup, only: %i() do
+    collection do
+      get :step1,:step2
+      post :save_step1_to_session, :complete_signup
+    end
+  end
   get :'category/:category_id/brand/:id', to: 'brands#root_category_brand_item'
+
+  # get 'signup/step1', to: 'signup#step1'
+  # post 'signup/save_step1_to_session', to: 'signup#save_step1_to_session'
+  # get 'signup/step2', to: 'signup#step2'
+  # post 'signup/complete_signup', to: 'signup#complete_signup'
 end

@@ -17,11 +17,11 @@ $(function(){
         if (status === 200) {
           $("#card_number").removeAttr("name");
           $("#exp_month").removeAttr("name");
-          $("#exp_year").removeAttr("name"); 
+          $("#exp_year").removeAttr("name");
           $("#cvc").removeAttr("name");
           $("#card_token").append(
             $('<input type="hidden" name="payjp-token">').val(response.id)
-          ); 
+          );
           document.inputForm.submit();  // 生成したトークンを送信する準備を整える
           alert("登録が完了しました");
         } else {

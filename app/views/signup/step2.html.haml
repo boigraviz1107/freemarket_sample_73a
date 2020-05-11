@@ -3,8 +3,7 @@
     .address__header
       %h2 発送元・お届け先住所変更
     .address__form
-      = form_for @account, url: signup_complete_signup_path do |f|
-        -# = form_with(@account, url:{contoroller:'signup',action:'complete_signup'}, local: true) do |f|
+      = form_for @account, url: complete_signup_signup_index_path do |f|
         .field
           .field__title
             = f.label :郵便番号, class: :field__title__label
@@ -35,8 +34,7 @@
             = f.label :電話番号, class: :field__title__label
             .any 任意
           = f.text_field :phone_num, placeholder: :"例)09012345678", class: :input_form
-        .field 
+        .field
           = f.submit "登録する", class: :submit_btn
           -# [.field]クラス名を変更・設定してからマークアップをお願いします
           -# 各formの最後にクラス名の付与をお願いします
-        

@@ -80,13 +80,16 @@ header {
           padding-right: 30px;
           position: relative;
         }
-        &__brand {          
+        &__brand {
           padding-left: 16px;
         }
       }
       &__rightItems {
         display: flex;
         height: 32px;
+        a:hover {
+          color:#ffb340;
+        }
         &__signup, &__mypage{
           padding-left: 16px;
         }
