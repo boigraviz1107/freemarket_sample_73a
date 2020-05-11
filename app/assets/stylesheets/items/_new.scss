@@ -233,6 +233,7 @@
       &__method {
         padding: 40px;
         margin:0 auto;
+        display: none;
         &__box {
           display:flex;
           margin-bottom: 20px;
@@ -244,6 +245,13 @@
         }
           #item_shipping_method {
             @include form2;
+            margin-bottom: 20px;
+            &__exhibitor {
+              // display: none;
+            }
+            &__buyer {
+              // display: none;
+            }
           }
       }
       &__area {
