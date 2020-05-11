@@ -9,12 +9,12 @@
             .showMain__content__itemBox__imageArea__firstImage__soldArea
             .showMain__content__itemBox__imageArea__firstImage__soldText
               SOLD
-          = image_tag @item.images[0].image.url , size: "300x250"
+          = image_tag @item.images[0].image.url , size: "300x250",class: "imageZoomPreview firstImage"
         - if @item.images.count >= 2
           %ul.showMain__content__itemBox__imageArea__otherImages
             - for i in 1..(@item.images.count-1)
               %li.showMain__content__itemBox__imageArea__otherImages__image
-                = image_tag @item.images[i].image.url , size: "100x150"
+                = image_tag @item.images[i].image.url , size: "100x150",class: "imageZoomPreview"
       .showMain__content__itemBox__price
         .showMain__content__itemBox__price__value
           ¥

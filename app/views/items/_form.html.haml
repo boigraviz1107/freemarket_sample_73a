@@ -17,17 +17,17 @@
         .productBody__main__form__image__box#image-box__container
           - if @images
             .item-image
-              = image_tag @images[0].image.url ,id: "preview0", size: "100x95"
+              = image_tag @images[0].image.url ,id: "preview0", size: "100x95",class: "imageZoom"
               - for i in 1..2
                 - if @images[i]
-                  = image_tag @images[i].image.url ,id: "preview#{i}", size: "100x95"
+                  = image_tag @images[i].image.url ,id: "preview#{i}", size: "100x95",class: "imageZoom"
                 - else
-                  = content_tag(:img, "", id: "preview#{i}")
+                  = content_tag(:img, "", id: "preview#{i}",class: "imageZoom")
           - else
             .item-image
-              %img#preview0/
-              %img#preview1/
-              %img#preview2/
+              %img.imageZoom#preview0/
+              %img.imageZoom#preview1/
+              %img.imageZoom#preview2/
         .productBody__main__form__image__boxes
           = f.fields_for :images,class: "productBody__main__form__image__box__form" do |i|
             .productBody__main__form__image__boxes__form__set

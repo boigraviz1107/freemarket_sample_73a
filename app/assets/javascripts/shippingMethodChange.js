@@ -6,7 +6,6 @@ window.addEventListener("load", function () {
 
   function previewShippingMethod(){
     if(methodArea.value === 'true') {
-      console.log(shippingArea)
       shippingArea_buyer.disabled = true
       shippingArea_exhibitor.disabled = false
       shippingArea.style.display = 'block';
@@ -26,4 +25,5 @@ window.addEventListener("load", function () {
     previewShippingMethod()
   }
   previewShippingMethod()
+
 })
