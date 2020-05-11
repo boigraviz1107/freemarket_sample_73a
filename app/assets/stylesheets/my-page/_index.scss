@@ -63,6 +63,7 @@ main {
           color: black;
         }
         a:hover {opacity: 0.5;}
+        
         &__top {
           text-align: center;
         }
@@ -88,12 +89,20 @@ main {
             width: 100%;
             text-align: center;
             font-weight: bold;
-            .content__notifi__group__list:hover {opacity: 0.5;}
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+
+            }
           }
           .is_active {
             background-color: white;
             border-top: solid;
             border-top-color: red;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
         }
         .content__notifi__second {
@@ -106,7 +115,11 @@ main {
             .is_showing{
               display: block;
               .content__notifi__under {
-                .content__notifi__under__list:hover {opacity: 0.5;}
+                .content__notifi__under__list:hover {
+                  background: #fafafa;
+                  opacity: 1;
+                  text-decoration: none;
+                }
                 &__list {
                   height: 80px;
                   line-height: 80px;
@@ -148,18 +161,26 @@ main {
           width: 100%;
           justify-content: space-evenly;
           background-color: #eee;
-          .content__deal__group__list:hover {opacity: 0.5;}
+          cursor: pointer;
           &__list {
             height: 80px;
             line-height: 80px;
             width: 100%;
             text-align: center;
             font-weight: bold;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
           .active {
             background-color: white;
             border-top: solid;
             border-top-color: red;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
         }
         &__tab {
@@ -172,13 +193,17 @@ main {
           .showing {
             display: block;
             .content__deal__tab__group {
-              .content__deal__tab__group__list:hover {opacity: 0.5;}
               &__list {
                 height: 80px;
                 line-height: 80px;
                 text-align: center;
                 display: block;
                 border-bottom: solid 1px #eee;
+                &:hover {
+                  background: #fafafa;
+                  opacity: 1;
+                  text-decoration: none;
+                }
               }
             }
           }

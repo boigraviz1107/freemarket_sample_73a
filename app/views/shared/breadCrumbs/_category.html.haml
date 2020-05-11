@@ -29,7 +29,7 @@
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to @category.parent.parent.name, category_path(@category.parent.parent)
+      = link_to @category.root.name, category_path(@category.root)
     %li
       %i.fa.fa-angle-right
     %li

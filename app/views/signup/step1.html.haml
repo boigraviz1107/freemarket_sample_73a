@@ -2,7 +2,7 @@
   .usermain__title
     %h2 会員入力情報
   .usermain__form
-    = form_for @user, url: signup_save_step1_to_session_path do |f|
+    = form_for @user, url: save_step1_to_session_signup_index_path do |f|
       -# = render "devise/shared/error_messages", resource: resource
       .field
         .field__title
@@ -40,7 +40,7 @@
           = f.text_field :first_name, placeholder: '例) 彩', class: :field__form__text
       .field
         .field__title
-          = f.label :お名前カナ（全角）, class: :field__title__label
+          = f.label :お名前平仮名（全角）, class: :field__title__label
           .must 必須
         .field__form
           = f.text_field :last_name_hira, placeholder:'例) やまだ', class: :field__form__text

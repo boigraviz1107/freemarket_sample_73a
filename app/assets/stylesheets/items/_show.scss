@@ -268,3 +268,37 @@
     }
   }
 }
+.addImageArea {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.315);
+  position: absolute;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor:zoom-out;
+  #imgArea {
+    width: 40%;
+    background-color: white;
+    border-radius: 8px;
+  }
+}
+.relative {
+  position: relative;
+}
+.imageZoomPreview, .imageZoom {
+  cursor:zoom-in;
+}
+.firstImage {
+  cursor:default;
+}
+.effect {
+  opacity: 0;
+}
+#addImageArea {
+  transition: .2s;
+}

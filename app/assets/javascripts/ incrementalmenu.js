@@ -83,17 +83,17 @@ window.addEventListener('load', function () {
                             });
                           });
                         });
-                    },200);
+                    },250);
                   });
                 });
               });
-            },200)
+            },250)
           });
         });
       })
       .fail((data) => {
         alert("error")
       })
-    },200)
+    },250)
   });
 });

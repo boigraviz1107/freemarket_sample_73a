@@ -1,5 +1,4 @@
 class SignupController < ApplicationController
-  
 
   def step1
     @user = User.new(session[:user_params])
@@ -11,11 +10,11 @@ class SignupController < ApplicationController
     user = User.new(user_params)
     session[:user_params] = user_params
     if user.valid?
-      redirect_to signup_step2_path
+      redirect_to step2_signup_index_path
     else
-      redirect_to signup_step1_path, flash: { notice: user.errors.full_messages }
+      redirect_to step1_signup_index_path, flash: { notice: user.errors.full_messages }
     end
-  end 
+  end
 
   def step2
     @account = Account.new(session[:account_params])
@@ -33,16 +32,17 @@ class SignupController < ApplicationController
       redirect_to users_path, flash: { notice: "アカウント作成しました" }
     else
       session[:account_params] = account_params
-      redirect_to "/signup/step2", flash: { notice: account.errors.full_messages }
+      redirect_to step2_signup_index_path, flash: { notice: account.errors.full_messages }
     end
   end
-  
+
   private
+
   def user_params
     params.require(:user).permit(
       :nickname,
       :email,
-      :password, 
+      :password,
       :birth_date,
       :first_name,
       :last_name,
@@ -50,15 +50,15 @@ class SignupController < ApplicationController
       :last_name_hira,
     )
   end
+
   def account_params
     params.require(:account).permit(
       :post_num,
       :prefecture_id,
-      :city, 
+      :city,
       :city_num,
       :building,
       :phone_num,
     )
   end
 end
-
