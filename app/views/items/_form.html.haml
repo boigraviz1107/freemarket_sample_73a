@@ -17,21 +17,25 @@
         .productBody__main__form__image__box#image-box__container
           - if @images
             .item-image
-              = image_tag @images[0].image.url ,id: "preview0", size: "100x95"
+              = image_tag @images[0].image.url ,id: "preview0", alt: "", size: "100x95"
               - if @images.count >= 2
                 - for i in 1..(@images.count-1)
-                  = image_tag @images[i].image.url ,id: "preview#{i}", size: "100x95"
+                  = image_tag @images[i].image.url ,id: "preview#{i}", alt: "", size: "100x95"
           - else
             .item-image
-              %img#preview0/
-              %img#preview1/
-              %img#preview2/
+              %img#preview0{alt: ""}/
+              %img#preview1{alt: ""}/
+              %img#preview2{alt: ""}/
         .productBody__main__form__image__boxes
           = f.fields_for :images,class: "productBody__main__form__image__box__form" do |i|
             .productBody__main__form__image__boxes__form__set
               = i.label :image, "画像",class: "productBody__main__form__image__box__form__set__label" do
                 %i.fas.fa-camera.fa-2x#img_file
                   = i.file_field :image,class: "productBody__main__form__image__box__form__set__field", style: "display: none"
+        .productBody__main__form__image__del
+          %button{id: "item_image_delete0", type: "button"}削除
+          %button{id: "item_image_delete1", type: "button"}削除
+          %button{id: "item_image_delete2", type: "button"}削除
       .productBody__main__form__nameArea
         .productBody__main__form__nameArea__box
           = f.label :name, "商品名",class: ".productBody__main__form__nameArea__box__label"

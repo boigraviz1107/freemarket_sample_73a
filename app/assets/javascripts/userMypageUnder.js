@@ -17,4 +17,8 @@ window.addEventListener("load", function () {
   tabsArys.forEach(function (value) {
     value.addEventListener("click", tabSwitch);
   });
+
+  $(document).ready($("#user_nickname").focus());
+  $(document).ready($("#account_post_num").focus());
+  
 });
