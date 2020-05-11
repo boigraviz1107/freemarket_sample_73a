@@ -83,7 +83,6 @@
             = link_to "編集する" , edit_item_path(@item),class:"showMain__content__itemBox__sellerItem__edit btn"
             = link_to "削除する" , item_path(@item),method: :delete, class: "showMain__content__itemBox__sellerItem__delete btn", data: { confirm:"商品を削除してよろしいですか?" }
   = form_with(url: "#", local: true, class: "showMain__content__commentArea", method: :get) do |f|
-    -# = form_with(model: @comment, local: true, class: "showMain__content__commentArea") do |f|
     - unless @item.order
       = f.text_area :text, class: "showMain__content__commentArea__textArea"
     - else

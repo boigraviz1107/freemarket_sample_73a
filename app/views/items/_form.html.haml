@@ -34,10 +34,10 @@
               = i.label :image, "画像",class: "productBody__main__form__image__box__form__set__label" do
                 %i.fas.fa-camera.fa-2x#img_file
                   = i.file_field :image,class: "productBody__main__form__image__box__form__set__field", style: "display: none"
-        .productBody__main__form__image__del
-          %button{id: "item_image_delete0", type: "button"}削除
-          %button{id: "item_image_delete1", type: "button"}削除
-          %button{id: "item_image_delete2", type: "button"}削除
+        - if params[:action] == "new"
+          .productBody__main__form__image__del
+            -for i in 0..2
+              %button{id: "item_image_delete#{i}", type: "button"}削除
       .productBody__main__form__nameArea
         .productBody__main__form__nameArea__box
           = f.label :name, "商品名",class: ".productBody__main__form__nameArea__box__label"

@@ -1,24 +1,19 @@
 $(function () {
+  let imagesArea = document.querySelectorAll(".productBody__main__form__image__box__form__set__field");
+  // Methods
+  // 画像の追加
   function addImage(idName, en) {
     var reader = new FileReader();
     reader.onload = e => $(`#preview${idName}`).attr('src', e.target.result)
     reader.readAsDataURL(en.target.files[0]);
   }
-  let imagesArea = document.querySelectorAll(".productBody__main__form__image__box__form__set__field");
+  // 画像の削除
+  function removeImage(idNum) {
+    $(`#preview${idNum}`).attr("src", "");
+    $(`#item_images_attributes_${idNum}_image`).val("");
+  }
+
+  // exec
   imagesArea.forEach((image, i) => image.onchange = e => addImage(i, e));
-
-  $(document).on('click', '#item_image_delete0', function () {
-    $("#preview0").attr("src", "");
-    $("#item_images_attributes_0_image").val("");
-  });
-
-  $(document).on('click', '#item_image_delete1', function () {
-    $("#preview1").attr("src", "");
-    $("#item_images_attributes_1_image").val("");
-  });
-
-  $(document).on('click', '#item_image_delete2', function () {
-    $("#preview2").attr("src", "");
-    $("#item_images_attributes_2_image").val("");
-  });
+  for(let i = 0; i < 3; i++) { $(`#item_image_delete${i}`).on('click',() => removeImage(i) ); }
 });
