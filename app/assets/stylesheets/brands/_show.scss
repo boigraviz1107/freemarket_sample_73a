@@ -36,7 +36,7 @@
       margin-right: 20px;
       margin-bottom: 20px;
     }
-    
+
     &__item{
       width: 100%;
       box-shadow: #333;
@@ -88,6 +88,9 @@
             font-size: 15px;
           }
         }
+      }
+      &:hover {
+        opacity: 0.6;
       }
     }
   }

@@ -51,8 +51,11 @@
             = link_to "#" do
               %i.fas.fa-plus-circle
               登録してください
+        .wrapper__main__payInfo__inner__pleaseSelect
+          %p
+            ※ 使用するカードを選択してください
         .wrapper__main__payInfo__inner__form
           = form_with(model: [@item, @order], local: true,class: "wrapper__main__payInfo__inner__form__area") do |f|
             = f.hidden_field :item_id, value: @item.id
-            = f.hidden_field :card_id
+            = f.hidden_field :card_id, class: 'hidden_card_id'
             = f.submit "購入する", class: "wrapper__main__payInfo__inner__form__area__submit", disabled: true , data: { confirm:"購入してよろしいですか?" }
