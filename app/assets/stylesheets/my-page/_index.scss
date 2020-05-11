@@ -88,7 +88,9 @@ main {
             width: 100%;
             text-align: center;
             font-weight: bold;
-            .content__notifi__group__list:hover {opacity: 0.5;}
+            &:hover {
+              cursor: pointer;
+            }
           }
           .is_active {
             background-color: white;
@@ -148,7 +150,7 @@ main {
           width: 100%;
           justify-content: space-evenly;
           background-color: #eee;
-          .content__deal__group__list:hover {opacity: 0.5;}
+          cursor: pointer;
           &__list {
             height: 80px;
             line-height: 80px;
@@ -172,7 +174,6 @@ main {
           .showing {
             display: block;
             .content__deal__tab__group {
-              .content__deal__tab__group__list:hover {opacity: 0.5;}
               &__list {
                 height: 80px;
                 line-height: 80px;

@@ -3,7 +3,7 @@
   .both
     = render "sideBar"
     .logout
-      =link_to destroy_user_session_path, method: :delete do
+      =link_to destroy_user_session_path, method: :delete,data: {confirm: "ログアウトしてよろしいですか?"} do
         .logout__text
           %p.logout__text__sentence
             ログアウト

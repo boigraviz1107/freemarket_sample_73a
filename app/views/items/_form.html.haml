@@ -18,9 +18,11 @@
           - if @images
             .item-image
               = image_tag @images[0].image.url ,id: "preview0", size: "100x95"
-              - if @images.count >= 2
-                - for i in 1..(@images.count-1)
+              - for i in 1..2
+                - if @images[i]
                   = image_tag @images[i].image.url ,id: "preview#{i}", size: "100x95"
+                - else
+                  = content_tag(:img, "", id: "preview#{i}")
           - else
             .item-image
               %img#preview0/
@@ -115,8 +117,8 @@
       = f.submit "出品する", class: "productBody__main__form__exhibition"
     = link_to "#" do
       %button{class: "productBody__main__form__draft", type: "submit"}下書きに保存
-    -if params[:acion] == "edit"
-      = link_to "items/#{@item.id}",method: :delete, data: { confirm:"商品を削除してよろしいですか?" } do
+    - if params[:acion] == "edit"
+      = link_to item_path,method: :delete, data: { confirm:"商品を削除してよろしいですか?" } do
         %button{class: "productBody__main__form__delete", type: "submit"}削除
     %br/
     .productBody__main__back
