@@ -49,7 +49,7 @@
       }
       &__imageGroup{
         width: 188px;
-        height: 220px;
+        height: 193px;
         border: solid 1px #fff; 
         position:  relative;
         &__soldArea {
@@ -79,6 +79,7 @@
         }
         &__price{
           position: absolute;
+          top: 165px;
           &__value {
             border-radius: 0px 12px 12px 0px;
             color: #fff;
