@@ -63,6 +63,7 @@ main {
           color: black;
         }
         a:hover {opacity: 0.5;}
+        
         &__top {
           text-align: center;
         }
@@ -90,12 +91,18 @@ main {
             font-weight: bold;
             &:hover {
               cursor: pointer;
+              opacity: .7;
+
             }
           }
           .is_active {
             background-color: white;
             border-top: solid;
             border-top-color: red;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
         }
         .content__notifi__second {
@@ -108,7 +115,11 @@ main {
             .is_showing{
               display: block;
               .content__notifi__under {
-                .content__notifi__under__list:hover {opacity: 0.5;}
+                .content__notifi__under__list:hover {
+                  background: #fafafa;
+                  opacity: 1;
+                  text-decoration: none;
+                }
                 &__list {
                   height: 80px;
                   line-height: 80px;
@@ -157,11 +168,19 @@ main {
             width: 100%;
             text-align: center;
             font-weight: bold;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
           .active {
             background-color: white;
             border-top: solid;
             border-top-color: red;
+            &:hover {
+              cursor: pointer;
+              opacity: .7;
+            }
           }
         }
         &__tab {
@@ -180,6 +199,11 @@ main {
                 text-align: center;
                 display: block;
                 border-bottom: solid 1px #eee;
+                &:hover {
+                  background: #fafafa;
+                  opacity: 1;
+                  text-decoration: none;
+                }
               }
             }
           }
