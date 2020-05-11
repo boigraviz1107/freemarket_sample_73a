@@ -1,5 +1,8 @@
 # README
 
+## 本番環境IPアドレス: [http://3.113.122.135/](http://3.113.122.135/)
+
+
 <img src="https://i.gyazo.com/7d68ebe972ad64314319c0fc29ee11c3.png">
 
 
@@ -16,8 +19,6 @@
 
 ### Association
 - belongs_to :user
-
-
 
 ## usersテーブル
 |Column|Type|Options|
@@ -38,27 +39,6 @@
 - has_many :comments,dependent: :destroy
 - has_many :orders,dependent: :destroy
 - has_many :items,dependent: :destroy
-
-
-
-## addresses
-|Column|Type|Options|
-|------|----|-------|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_name_hira|string|null: false|
-|last_name_hira|string|null: false|
-|user_id|references|null: false,foreign_key:true|
-|post_num|string|null:false|
-|prefecture|string|null: false|
-|city|string|null:false|
-|cuty_num|string|null :false|
-|building|string|
-|phone_num|string|
-
-### Association
-- belongs_to :user
-
 
 ## orders
 |Column|Type|Options|
