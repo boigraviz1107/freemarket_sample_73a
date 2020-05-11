@@ -131,8 +131,18 @@
             }
           }
         }
-        &__form {
+        &__pleaseSelect {
           margin-top: 32px;
+          height: 23px;
+          width: 100%;
+          p {
+            font-size: 15px;
+            font-weight: bold;
+            color: red;
+          }
+        }
+        &__form {
+          margin-top: 10px;
           &__area {
             &__submit {
               border: 0;
