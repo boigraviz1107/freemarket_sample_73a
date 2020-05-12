@@ -3,7 +3,7 @@
 ## 本番環境IPアドレス: [http://3.113.122.135/](http://3.113.122.135/)
 
 
-<img src="https://i.gyazo.com/dac2e35a77d057e8134596370f86cdaf.png">
+<img src="https://i.gyazo.com/eb0c583f8ec3801392d751e90cc319e6.png">
 
 
 ## accounts
