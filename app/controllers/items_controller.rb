@@ -24,8 +24,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params_item)
     if @item.save
-      flash[:notice] = "商品を登録しました"
-      redirect_to @item
+      redirect_to @item, flash: { notice: "商品を登録しました" }
     else
       session[:item] = @item
       redirect_to new_item_path, flash: { errors: @item.errors.full_messages }
@@ -56,12 +55,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-      if @item.destroy
-        redirect_to users_path, flash: { notice: "商品を削除しました" }
-      else
-        flash[:alert] = "エラーが発生しました"
-        redirect_back(fallback_location: root_path)
-      end
+    if @item.destroy
+      redirect_to users_path, flash: { notice: "商品を削除しました" }
+    else
+      redirect_back(fallback_location: root_path),flash: { alert: "エラーが発生しました" }
+    end
   end
 
   private
