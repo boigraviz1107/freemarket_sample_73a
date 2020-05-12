@@ -58,7 +58,8 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to users_path, flash: { notice: "商品を削除しました" }
     else
-      redirect_back(fallback_location: root_path),flash: { alert: "エラーが発生しました" }
+      flash[:alert] = "エラーが発生しました"
+      redirect_back(fallback_location: root_path)
     end
   end
 
