@@ -122,70 +122,79 @@ end
 
 require 'faker'
 Faker::Config.locale = 'ja'
-status = ['新品、未使用', '未使用に近い', '目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い']
-shipping_method = [
-  '未定',
-  'らくらくメルカリ',
-  'ゆうメール',
-  'レターパック',
-  '普通郵便(定形、定形外)',
-  'クロネコヤマト',
-  'ゆうパック',
-  'クリックポスト',
-  'ゆうパケット',
-]
+# status = ['新品、未使用', '未使用に近い', '目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い']
+# shipping_method = [
+#   '未定',
+#   'らくらくメルカリ',
+#   'ゆうメール',
+#   'レターパック',
+#   '普通郵便(定形、定形外)',
+#   'クロネコヤマト',
+#   'ゆうパック',
+#   'クリックポスト',
+#   'ゆうパケット',
+# ]
 
 # 乱数取得
-def rand_math(min, max)
-  return Random.new().rand(min..max)
-end
+# def rand_math(min, max)
+#   return Random.new().rand(min..max)
+# end
 
 
 # 適当に切り捨て
-def math_floor(price)
-  price = price.to_s.split("")
-  ((price[0..(price.count-3)].join) + "0" + "0").to_i
-end
+# def math_floor(price)
+#   price = price.to_s.split("")
+#   ((price[0..(price.count-3)].join) + "0" + "0").to_i
+# end
 
 # Brand
-5.times do
-  Brand.create!(name: Faker::Restaurant.name )
-end
+# 5.times do
+#   Brand.create!(name: Faker::Restaurant.name )
+# end
 
 # User
-for i in 1..4
-  User.create!(
-    nickname: Faker::Lorem.word  + Faker::Name.last_name,
-    birth_date: Faker::Date.in_date_period,
-    email: "test#{i}@gmail.com",
-    password: "12345678",
-    password_confirmation:"12345678",
-    last_name: Faker::Name.last_name,
-    last_name_hira: "たなか",
-    first_name: Faker::Name.first_name,
-    first_name_hira: "しんじ"
-  )
-end
+User.create!(
+  nickname: "出品者テストユーザー",
+  birth_date: Faker::Date.in_date_period,
+  email: "test1@gmail.com",
+  password: "12345678",
+  password_confirmation:"12345678",
+  last_name: "田中",
+  last_name_hira: "たなか",
+  first_name: "真司",
+  first_name_hira: "しんじ"
+)
+User.create!(
+  nickname: "購入者テストユーザー",
+  birth_date: Faker::Date.in_date_period,
+  email: "test2@gmail.com",
+  password: "12345678",
+  password_confirmation:"12345678",
+  last_name: "岡田",
+  last_name_hira: "おかだ",
+  first_name: "太郎",
+  first_name_hira: "たろう"
+)
 
 # Item
-40.times do
-  item = Item.new(
-    user_id: rand_math(1,(User.count)),
-    category_id: rand_math(47,(Category.count)),
-    brand_id: rand_math(1,(Brand.count)),
-    name: Faker::Company.suffix + Faker::Games::Pokemon.name,
-    explannation: Faker::Lorem.question(word_count: 20),
-    status: status[rand_math(0,(status.count - 1))],
-    shipper: Faker::Boolean.boolean,
-    shipping_area: Prefecture.find(rand_math(1,Prefecture.count)).name,
-    lead_time: rand_math(0,2),
-    price: math_floor(rand_math(300,9999999)),
-    size: Faker::Lorem.word,
-    shipping_method: shipping_method[rand_math(0,(shipping_method.count - 1))]
-  )
-  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-  item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-  item.save!
-end
+# 40.times do
+#   item = Item.new(
+#     user_id: rand_math(1,(User.count)),
+#     category_id: rand_math(47,(Category.count)),
+#     brand_id: rand_math(1,(Brand.count)),
+#     name: Faker::Company.suffix + Faker::Games::Pokemon.name,
+#     explannation: Faker::Lorem.question(word_count: 20),
+#     status: status[rand_math(0,(status.count - 1))],
+#     shipper: Faker::Boolean.boolean,
+#     shipping_area: Prefecture.find(rand_math(1,Prefecture.count)).name,
+#     lead_time: rand_math(0,2),
+#     price: math_floor(rand_math(300,9999999)),
+#     size: Faker::Lorem.word,
+#     shipping_method: shipping_method[rand_math(0,(shipping_method.count - 1))]
+#   )
+#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
+#   item.save!
+# end
 
