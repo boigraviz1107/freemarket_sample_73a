@@ -63,7 +63,7 @@ main {
           color: black;
         }
         a:hover {opacity: 0.5;}
-        
+
         &__top {
           text-align: center;
         }
@@ -121,6 +121,7 @@ main {
                   text-decoration: none;
                 }
                 &__list {
+                  cursor: pointer;
                   height: 80px;
                   line-height: 80px;
                   text-align: center;
@@ -194,6 +195,7 @@ main {
             display: block;
             .content__deal__tab__group {
               &__list {
+                cursor: pointer;
                 height: 80px;
                 line-height: 80px;
                 text-align: center;
