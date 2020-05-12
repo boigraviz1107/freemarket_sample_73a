@@ -121,36 +121,6 @@ children.each_with_index do |child, i|
 end
 
 require 'faker'
-Faker::Config.locale = 'ja'
-# status = ['新品、未使用', '未使用に近い', '目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い']
-# shipping_method = [
-#   '未定',
-#   'らくらくメルカリ',
-#   'ゆうメール',
-#   'レターパック',
-#   '普通郵便(定形、定形外)',
-#   'クロネコヤマト',
-#   'ゆうパック',
-#   'クリックポスト',
-#   'ゆうパケット',
-# ]
-
-# 乱数取得
-# def rand_math(min, max)
-#   return Random.new().rand(min..max)
-# end
-
-
-# 適当に切り捨て
-# def math_floor(price)
-#   price = price.to_s.split("")
-#   ((price[0..(price.count-3)].join) + "0" + "0").to_i
-# end
-
-# Brand
-# 5.times do
-#   Brand.create!(name: Faker::Restaurant.name )
-# end
 
 # User
 User.create!(
@@ -175,26 +145,3 @@ User.create!(
   first_name: "太郎",
   first_name_hira: "たろう"
 )
-
-# Item
-# 40.times do
-#   item = Item.new(
-#     user_id: rand_math(1,(User.count)),
-#     category_id: rand_math(47,(Category.count)),
-#     brand_id: rand_math(1,(Brand.count)),
-#     name: Faker::Company.suffix + Faker::Games::Pokemon.name,
-#     explannation: Faker::Lorem.question(word_count: 20),
-#     status: status[rand_math(0,(status.count - 1))],
-#     shipper: Faker::Boolean.boolean,
-#     shipping_area: Prefecture.find(rand_math(1,Prefecture.count)).name,
-#     lead_time: rand_math(0,2),
-#     price: math_floor(rand_math(300,9999999)),
-#     size: Faker::Lorem.word,
-#     shipping_method: shipping_method[rand_math(0,(shipping_method.count - 1))]
-#   )
-#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-#   item.images.build(image: File.open("#{Rails.root}/public/images/pict/item_image.png"), item_id: i)
-#   item.save!
-# end
-

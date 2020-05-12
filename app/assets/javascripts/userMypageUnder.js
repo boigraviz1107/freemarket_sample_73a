@@ -16,5 +16,5 @@ window.addEventListener("load", function () {
 
   $(document).ready($("#user_nickname").focus());
   $(document).ready($("#account_post_num").focus());
-  
+
 });

@@ -11,22 +11,6 @@
               必須
             = text_field_tag "number", "", class: 'card-number--input', type: "text", id: 'card_number', maxlength: "16", placeholder: "半角数字のみ"
             .registration-error{type: "hidden", value: "必須項目です"}
-            -# %ul.card-list
-            -#   -# assets/imagesにimageを設置しており、それをimage_tagで呼び出しています。
-            -#   %li.card-list--item{ style: "margin-left: 0;"}
-            -#     = image_tag "visa.svg", width:"49", height:"20"
-            -#   %li.card-list--item
-            -#     = image_tag "master-card.svg", width:"34", height:"20"
-            -#   %li.card-list--item  
-            -#     = image_tag "saison-card.svg", width:"30", height:"20"
-            -#   %li.card-list--item  
-            -#     = image_tag "jcb.svg", width:"32", height:"20"
-            -#   %li.card-list--item
-            -#     = image_tag "american_express.svg", width:"21", height:"20"
-            -#   %li.card-list--item
-            -#     = image_tag "dinersclub.svg", width:"32", height:"20"
-            -#   %li.card-list--item 
-            -#     = image_tag "discover.svg", width:"32", height:"20"
           .card-form__box__expire
             %label.box-group--label 有効期限
             %span.input-require
@@ -47,7 +31,6 @@
                   %option{value: "11"}11
                   %option{value: "12"}12
                 %i.card-form-expire-icon
-                  -# = image_tag "arrow-bottom.png", size:"16x10",class:"arrow-bottom-icon5"
                 %span{class: "month"} 月
               .card-expire__select-year
                 %select#exp_year{name: "exp_year", type: "text"}
@@ -62,7 +45,6 @@
                   %option{value: "2028"}28
                   %option{value: "2029"}29
                 %i.card-form-expire-icon
-                  -# = image_tag "arrow-bottom.png", size: "16x10",class:"arrow-bottom-icon6"
                 %span{class:"year"} 年
           .card-form__box__security-code
             %label.box-group--label{for: "cvc"} セキュリティーコード
@@ -71,7 +53,7 @@
             = text_field_tag "cvc", "", class: 'payment__security-code', type: "text", id: "cvc", maxlength: "4" ,placeholder: "カード背面４桁もしくは３桁の番号"
             .question-form
               %span.question-form__mark ?
-              %span.question-form__text 
+              %span.question-form__text
                 カード裏面の番号とは？
           #card_token
           = submit_tag "追加する", class: "card-form__box__add", id: "token_submit", type: 'button'

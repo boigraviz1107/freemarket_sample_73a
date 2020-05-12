@@ -36,13 +36,13 @@ ja:
       category:
         name: カテゴリー
       item:
-        category: カテゴリー
+        category: カテゴリ
         category_id: カテゴリー
         name: アイテム名
         explannation: アイテムの説明
         status: アイテムの情報
         shipper: 送料負担者
-        shipping_area: 配送地
+        shipping_area: 配送元
         lead_time: 配送までの日数
         price: 値段
         size: サイズ

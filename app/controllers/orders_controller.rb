@@ -49,8 +49,8 @@ class OrdersController < ApplicationController
         card: params['payjp-token'],
       )
       @card = Pay.create(
-        user_id: current_user.id, 
-        customer_id: customer.id, 
+        user_id: current_user.id,
+        customer_id: customer.id,
         card_id: customer.cards.data[0].id
       )
       if @card.save
@@ -62,7 +62,6 @@ class OrdersController < ApplicationController
   end
 
   def orderOk
-    # 購入完了お知らせページ
   end
 
   private

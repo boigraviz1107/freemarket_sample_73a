@@ -5,7 +5,11 @@
         - flash[:errors].each do |error|
           %p
             %i
-              = "* #{error}"
+              - if error == "送料負担者は一覧にありません"
+                * 送料負担者を入力してください
+              - elsif error == "カテゴリを入力してください"
+              - else
+                = "* #{error}"
     = form_with(model: @item, local: true,class: "productBody__main__form") do |f|
       .productBody__main__form__image
         .productBody__main__form__image__set
@@ -56,7 +60,7 @@
           = f.label :category_id, "カテゴリー",class: ".productBody__main__form__category__box__label"
           .productBody__main__form__category__box__must 必須
         .productBody__main__form__category__field
-          = f.select :category, options_for_select(@parents.map{|c|[c[:name], c[:id]]}), {include_blank: '選択して下さい'}, {id: 'parentsArea'}
+          = f.select :aaa, options_for_select(@parents.map{|c|[c[:name], c[:id]]}), {include_blank: '選択して下さい'}, {id: 'parentsArea'}
       .productBody__main__form__brand
         .productBody__main__form__brand__box
           = f.label :brand_name, "ブランド名",class: ".productBody__main__form__brand__box__label"
@@ -89,7 +93,6 @@
         .productBody__main__form__method__field
           = f.select :shipping_method,['未定', 'らくらくメルカリ便', 'ゆうゆうメルカリ便', 'ゆうメール', 'レターパック', '普通郵便(定形、定形以外)', 'クロネコヤマト', 'ゆうパック', 'クリックポスト', 'ゆうパケット'] , {include_blank: '選択して下さい'},class: "productBody__main__form__method__field__exhibitor"
           = f.select :shipping_method,['未定', 'クロネコヤマト', 'ゆうパック', 'ゆうメール'] , {include_blank: '選択して下さい'},class: "productBody__main__form__method__field__buyer"
-          -# ,class: ".productBody__main__form__method__field__buyer"
       .productBody__main__form__area
         .productBody__main__form__area__box
           = f.label :shipping_area, "発送元の地域",class: "productBody__main__form__area__box__label"

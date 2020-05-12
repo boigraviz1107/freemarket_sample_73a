@@ -1,7 +1,7 @@
 .parentsArea {
   position: absolute;
   background-color: white;
-  z-index: 2;
+  z-index: 100;
   padding-top: 15px;
   width: 240px;
   color: #333;
@@ -24,7 +24,7 @@
       position: absolute;
       top: 0;
       left: 210px;
-      z-index: 3;
+      z-index: 100;
       min-height: 545px;
       .aChildFixArea {
         position: relative;
@@ -45,7 +45,7 @@
           .aGroundChild {
             line-height: 32px;
             display: block;
-            z-index: 3;
+            z-index: 100;
             padding: 3px 8px 3px 10px;
             border-bottom: 1px solid #f8f8f8;
           }

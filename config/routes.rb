@@ -30,9 +30,4 @@ Rails.application.routes.draw do
     end
   end
   get :'category/:category_id/brand/:id', to: 'brands#root_category_brand_item'
-
-  # get 'signup/step1', to: 'signup#step1'
-  # post 'signup/save_step1_to_session', to: 'signup#save_step1_to_session'
-  # get 'signup/step2', to: 'signup#step2'
-  # post 'signup/complete_signup', to: 'signup#complete_signup'
 end
