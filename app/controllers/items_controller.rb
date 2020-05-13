@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
     else
       session[:item] = @item
       redirect_to new_item_path, flash: { errors: @item.errors.full_messages }
+      redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages.push("画像を一枚以上選択してください") }
     end
   end
 
@@ -47,9 +48,12 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(params_item)
-      redirect_to @item, flash: { notice: "商品を更新しました" }
+      delete_image
     else
       session[:item]["category_id"] = Item.find(params[:id]).category_id
+      return false if redirect_item_edit if @item.images.count == 1 && params[:image0] == "false"
+      return false if redirect_item_edit if @item.images.count == 2 && params[:image0] == "false" && params[:image1] == "false"
+      return false if redirect_item_edit if @item.images.count == 3 && params[:image0] == "false" && params[:image1] == "false" && params[:image2] == "false"
       redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages }
     end
   end
@@ -109,6 +113,20 @@ class ItemsController < ApplicationController
 
   def set_category
     @parents = Category.where(id: 1..4)
+  end
+
+  def delete_image
+    return false if redirect_item_edit if @item.images.count == 1 && params[:image0] == "false"
+    return false if redirect_item_edit if @item.images.count == 2 && params[:image0] == "false" && params[:image1] == "false"
+    return false if redirect_item_edit if @item.images.count == 3 && params[:image0] == "false" && params[:image1] == "false" && params[:image2] == "false"
+    for i in 0..2
+      @item.images[i].destroy if params[:"image#{i}"] && params[:"image#{i}"] == "false"
+    end
+    redirect_to @item, flash: { notice: "商品を更新しました" }
+  end
+
+  def redirect_item_edit
+    redirect_to edit_item_path(@item), flash: { errors: @item.errors.full_messages.push("画像を一枚以上選択してください") }
   end
 
 end

@@ -6,11 +6,13 @@ $(function () {
     var reader = new FileReader();
     reader.onload = e => $(`#preview${idName}`).attr('src', e.target.result)
     reader.readAsDataURL(en.target.files[0]);
+    $(`#image${idName}`).val("true");
   }
   // 画像の削除
   function removeImage(idNum) {
     $(`#preview${idNum}`).attr("src", "");
     $(`#item_images_attributes_${idNum}_image`).val("");
+    $(`#image${idNum}`).val("false");
   }
 
   // exec
